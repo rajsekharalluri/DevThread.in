@@ -1,0 +1,20 @@
+<section class="hero">
+  <div class="eyebrow">DEVTHREAD · ENGINEERING KNOWLEDGE</div>
+  <h1>Build the judgment behind great software.</h1>
+  <p>Learn the concepts, trade-offs, and production decisions that help you design, build, operate, and explain real systems with confidence.</p>
+  <a class="global-search hero-search" routerLink="/search"><span>⌕</span><span style="color: var(--muted)">Search topics, concepts, and interview questions</span><kbd>Ctrl K</kbd></a>
+</section>
+<section>
+  <div class="section-heading"><h2>Continue learning</h2><span>Persisted on this browser</span></div>
+  <div class="topic-grid">
+    @for (topic of topics().slice(0, 4); track topic.id) {
+      <a class="topic-card" [routerLink]="['/', topic.category, topic.slug]"><span class="badge">{{ topic.categoryTitle }}</span><h3>{{ topic.title }}</h3><p>{{ topic.description }}</p><div class="progress-line"><span [style.width.%]="percent(topic.id)"></span></div></a>
+    }
+  </div>
+</section>
+<section>
+  <div class="section-heading"><h2>Explore the learning paths</h2><span>{{ topics().length }} practical topics</span></div>
+  <div class="topic-grid">
+    @for (item of featured; track item.slug) { <a class="topic-card" [routerLink]="['/', item.category, item.slug]"><span class="eyebrow">{{ item.tone }}</span><h3>{{ item.label }}</h3><p>Fundamentals, internals, production behavior, trade-offs, and interview perspective.</p></a> }
+  </div>
+</section>

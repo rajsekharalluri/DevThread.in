@@ -1,0 +1,65 @@
+# Build outputs
+publish/
+dist/
+out/
+bin/
+obj/
+
+# Dependencies
+node_modules/
+packages/
+
+# IDE
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+*.env
+
+# Secrets
+secrets/
+*.pem
+*.key
+*.pfx
+*.p12
+credentials.json
+service-account.json
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Deployment artifacts
+*.zip
+*.tar.gz
+
+# Email/password files (specific to this project)
+scripts/email.txt
+scripts/deploy.txt
+
+# Angular specific
+.angular/
+.angular-cache/

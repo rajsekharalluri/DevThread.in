@@ -1,0 +1,2 @@
+.\scripts\deploy-via-s3.ps1 `
+  -PublicBaseUrl "https://devthread.in"

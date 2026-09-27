@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="DevThread logo">
+  <rect width="64" height="64" rx="14" fill="#4f6bed"/>
+  <path d="M14 16.5A5.5 5.5 0 0 1 19.5 11H31v39H19.5A5.5 5.5 0 0 0 14 55.5v-39Z" fill="#fff" opacity=".96"/>
+  <path d="M50 16.5A5.5 5.5 0 0 0 44.5 11H33v39h11.5a5.5 5.5 0 0 1 5.5 5.5v-39Z" fill="#dfe5ff"/>
+  <path d="M31 11v39M19 20h7M19 27h7M37 20h7M37 27h7" fill="none" stroke="#4f6bed" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="32" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#4f6bed">DT</text>
+</svg>

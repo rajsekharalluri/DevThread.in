@@ -1,0 +1,58 @@
+@if (loading()) {
+  <div class="loading">Loading interview preparation...</div>
+} @else if (error()) {
+  <div class="error-state">Interview preparation could not be loaded.</div>
+} @else {
+  <section class="interview-hub">
+    <div class="breadcrumbs"><a routerLink="/">DevThread</a> / Interview Preparation</div>
+    <div class="interview-hero">
+      <div class="eyebrow">INTERVIEW PREPARATION</div>
+      <h1>Turn knowledge into confident explanations.</h1>
+      <p>Choose a learning track, open a topic, answer the question aloud, then reveal the answer and mark whether you feel confident or need to review it later.</p>
+      <div class="interview-stats"><strong>{{ visibleCount() }}+</strong><span>questions across {{ groups().length }} learning tracks</span></div>
+    </div>
+
+    <div class="section-heading"><h2>Choose a track</h2><span>Easy, practical, and senior-level questions</span></div><div class="interview-level-filter"><span>Question level</span><button type="button" [class.selected]="activeLevel() === 'ALL'" (click)="setLevel('ALL')">All</button><button type="button" [class.selected]="activeLevel() === 'L1'" (click)="setLevel('L1')">L1 Foundation</button><button type="button" [class.selected]="activeLevel() === 'L2'" (click)="setLevel('L2')">L2 Practical</button><button type="button" [class.selected]="activeLevel() === 'L3'" (click)="setLevel('L3')">L3 Senior</button></div>
+
+    @for (group of groups(); track group.category) {
+      <section class="interview-category">
+        <button class="accordion-button" type="button" (click)="toggleCategory(group.category)" [attr.aria-expanded]="openCategory() === group.category">
+          <span>{{ group.title }}</span><strong>{{ group.questions.length }} questions</strong><span>{{ openCategory() === group.category ? '−' : '+' }}</span>
+        </button>
+
+        @if (openCategory() === group.category) {
+          <div class="interview-topics">
+            @for (topicGroup of topicsFor(group); track topicGroup.topicId) {
+              <button class="topic-accordion" type="button" (click)="toggleTopic(topicGroup.topicId)">
+                <span>{{ topicGroup.topicTitle }}</span>
+                <small>{{ questionsFor(group, topicGroup.topicId).length }} questions</small>
+                <span>{{ openTopic() === topicGroup.topicId ? '−' : '+' }}</span>
+              </button>
+
+              @if (openTopic() === topicGroup.topicId) {
+                <div class="interview-question-list">
+                  @for (question of questionsFor(group, topicGroup.topicId); track question.topicId + ':' + question.questionIndex) {
+                    <article class="interview-question-card">
+                      <div class="result-meta">{{ question.level }}</div>
+                      <h3>{{ question.question }}</h3>
+                      @if (question.answer) {
+                        <details class="interview-answer"><summary>Show answer</summary><p>{{ question.answer }}</p></details>
+                      } @else {
+                        <a [routerLink]="question.url">Open full topic →</a>
+                      }
+                      <div class="interview-rating">
+                        <span>How did you do?</span>
+                        <button type="button" [class.selected]="rating(question) === 'confident'" (click)="rate(question, 'confident')">Confident</button>
+                        <button type="button" [class.selected]="rating(question) === 'review'" (click)="rate(question, 'review')">Review later</button>
+                      </div>
+                    </article>
+                  }
+                </div>
+              }
+            }
+          </div>
+        }
+      </section>
+    }
+  </section>
+}

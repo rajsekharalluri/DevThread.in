@@ -1,0 +1,206 @@
+<div class="academy-shell">
+  <header class="topbar">
+    <button class="mobile-menu btn-icon" type="button" aria-label="Open learning navigation" (click)="sidebarOpen.set(!sidebarOpen())">☰</button>
+    <a class="brand" routerLink="/"><img class="brand-logo" src="LOGO.png" alt="DevThread" /></a>
+    <form class="global-search" (submit)="$event.preventDefault(); submitSearch()">
+      <span aria-hidden="true">⌕</span><input [ngModel]="searchQuery()" (ngModelChange)="searchQuery.set($event)" name="search" placeholder="Search topics, concepts, and interviews" aria-label="Search" /><kbd>Ctrl K</kbd>
+    </form>
+    <div class="top-actions"><button class="btn-icon" type="button" aria-label="Toggle theme" (click)="toggleTheme()">{{ store.theme() === 'dark' ? '☼' : '☾' }}</button><div class="space-menu"><button class="profile-name" type="button" aria-haspopup="menu" [attr.aria-expanded]="spaceOpen()" (click)="toggleSpace()">My Space <span class="space-chevron">{{ spaceOpen() ? '▲' : '▼' }}</span></button>@if (spaceOpen()) { <div class="space-dropdown" role="menu"><a routerLink="/progress" (click)="spaceOpen.set(false)"><span>▥</span> Progress</a><a routerLink="/bookmarks" (click)="spaceOpen.set(false)"><span>★</span> Bookmarks</a><a routerLink="/notes" (click)="spaceOpen.set(false)"><span>✎</span> My Notes</a><a routerLink="/interview" (click)="spaceOpen.set(false)"><span>▤</span> Interview Preparation</a></div> }</div></div>
+  </header>
+  <div class="workspace">
+    <aside class="sidebar" [class.open]="sidebarOpen()">
+      <div class="sidebar-heading">LEARNING PATHS</div>
+      <a routerLinkActive="active" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="sidebarOpen.set(false)"><span>⌂</span> Learning hub</a>
+      <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'foundations'" (click)="toggleMenu('foundations')"><span>FOUNDATIONS</span><span class="menu-chevron">{{ openMenu() === 'foundations' ? '−' : '+' }}</span></button>
+      @if (openMenu() === 'foundations') {
+        <a routerLinkActive="active" routerLink="/programming-fundamentals/oop" (click)="sidebarOpen.set(false)"><span>◈</span> Object-oriented design</a>
+        <a routerLinkActive="active" routerLink="/programming-fundamentals/solid" (click)="sidebarOpen.set(false)"><span>◈</span> SOLID principles</a>
+      }
+      <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'csharp'" (click)="toggleMenu('csharp')"><span>C#</span><span class="menu-chevron">{{ openMenu() === 'csharp' ? '−' : '+' }}</span></button>
+      @if (openMenu() === 'csharp') {
+        <a routerLinkActive="active" routerLink="/csharp/learning-path" (click)="sidebarOpen.set(false)"><span>◫</span> C# / .NET Learning Path</a>
+        <a routerLinkActive="active" routerLink="/csharp/fundamentals" (click)="sidebarOpen.set(false)"><span>◫</span> Fundamentals</a>
+        <a routerLinkActive="active" routerLink="/csharp/classes" (click)="sidebarOpen.set(false)"><span>◫</span> Classes</a>
+        <a routerLinkActive="active" routerLink="/csharp/interfaces" (click)="sidebarOpen.set(false)"><span>◫</span> Interfaces</a>
+        <a routerLinkActive="active" routerLink="/csharp/generics" (click)="sidebarOpen.set(false)"><span>◫</span> Generics</a>
+        <a routerLinkActive="active" routerLink="/csharp/linq" (click)="sidebarOpen.set(false)"><span>◫</span> LINQ</a>
+        <a routerLinkActive="active" routerLink="/csharp/async-await" (click)="sidebarOpen.set(false)"><span>◫</span> Async / Await</a>
+        <a routerLinkActive="active" routerLink="/csharp/types-nullability-patterns" (click)="sidebarOpen.set(false)"><span>◫</span> Types & Nullability</a>
+        <a routerLinkActive="active" routerLink="/csharp/collections-delegates-events" (click)="sidebarOpen.set(false)"><span>◫</span> Collections & Events</a>
+        <a routerLinkActive="active" routerLink="/csharp/concurrency-tasks" (click)="sidebarOpen.set(false)"><span>◫</span> Threading & Tasks</a>
+        <a routerLinkActive="active" routerLink="/csharp/exceptions-disposal-reflection" (click)="sidebarOpen.set(false)"><span>◫</span> Exceptions & Runtime Tools</a>
+      }
+      <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'sql'" (click)="toggleMenu('sql')"><span>SQL</span><span class="menu-chevron">{{ openMenu() === 'sql' ? '−' : '+' }}</span></button>
+      @if (openMenu() === 'sql') {
+        <a routerLinkActive="active" routerLink="/sql/fundamentals" (click)="sidebarOpen.set(false)"><span>▤</span> Fundamentals</a>
+        <a routerLinkActive="active" routerLink="/sql/select-filtering-sorting" (click)="sidebarOpen.set(false)"><span>▤</span> SELECT & Filtering</a>
+        <a routerLinkActive="active" routerLink="/sql/joins" (click)="sidebarOpen.set(false)"><span>▤</span> Joins</a>
+        <a routerLinkActive="active" routerLink="/sql/group-aggregations" (click)="sidebarOpen.set(false)"><span>▤</span> GROUP BY & Aggregates</a>
+        <a routerLinkActive="active" routerLink="/sql/subqueries-ctes" (click)="sidebarOpen.set(false)"><span>▤</span> Subqueries & CTEs</a>
+        <a routerLinkActive="active" routerLink="/sql/window-functions" (click)="sidebarOpen.set(false)"><span>▤</span> Window Functions</a>
+        <a routerLinkActive="active" routerLink="/sql/normalization" (click)="sidebarOpen.set(false)"><span>▤</span> Normalization</a>
+        <a routerLinkActive="active" routerLink="/sql/transactions-isolation" (click)="sidebarOpen.set(false)"><span>▤</span> Transactions & Locks</a>
+        <a routerLinkActive="active" routerLink="/sql/indexes-performance" (click)="sidebarOpen.set(false)"><span>▤</span> Indexes & Performance</a>
+        <a routerLinkActive="active" routerLink="/sql/triggers" (click)="sidebarOpen.set(false)"><span>▤</span> Triggers</a>
+        <a routerLinkActive="active" routerLink="/sql/views-procedures" (click)="sidebarOpen.set(false)"><span>▤</span> Views & Procedures</a>
+        <a routerLinkActive="active" routerLink="/sql/query-examples" (click)="sidebarOpen.set(false)"><span>▤</span> Query Examples</a>
+        <a routerLinkActive="active" routerLink="/sql/database-design" (click)="sidebarOpen.set(false)"><span>▤</span> Database Design</a>
+        <a routerLinkActive="active" routerLink="/sql/denormalization" (click)="sidebarOpen.set(false)"><span>▤</span> Denormalization</a>
+      }
+      <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'angular'" (click)="toggleMenu('angular')"><span>ANGULAR</span><span class="menu-chevron">{{ openMenu() === 'angular' ? '−' : '+' }}</span></button>
+      @if (openMenu() === 'angular') {
+        <a routerLinkActive="active" routerLink="/angular/learning-path" (click)="sidebarOpen.set(false)"><span>◧</span> Angular Learning Path</a>
+        <a routerLinkActive="active" routerLink="/angular/typescript-javascript" (click)="sidebarOpen.set(false)"><span>◧</span> TypeScript & Browser Basics</a>
+        <a routerLinkActive="active" routerLink="/angular/fundamentals" (click)="sidebarOpen.set(false)"><span>◧</span> Fundamentals</a>
+        <a routerLinkActive="active" routerLink="/angular/directives-pipes" (click)="sidebarOpen.set(false)"><span>◧</span> Directives & Pipes</a>
+        <a routerLinkActive="active" routerLink="/angular/dependency-injection" (click)="sidebarOpen.set(false)"><span>◧</span> DI & Services</a>
+        <a routerLinkActive="active" routerLink="/angular/routing" (click)="sidebarOpen.set(false)"><span>◧</span> Routing & Lazy Loading</a>
+        <a routerLinkActive="active" routerLink="/angular/forms" (click)="sidebarOpen.set(false)"><span>◧</span> Forms</a>
+        <a routerLinkActive="active" routerLink="/angular/rxjs-http" (click)="sidebarOpen.set(false)"><span>◧</span> RxJS & HTTP</a>
+        <a routerLinkActive="active" routerLink="/angular/change-detection-signals" (click)="sidebarOpen.set(false)"><span>◧</span> Change Detection & Signals</a>
+        <a routerLinkActive="active" routerLink="/angular/ngrx" (click)="sidebarOpen.set(false)"><span>◧</span> NgRx State Management</a>
+      }
+      <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'dotnet'" (click)="toggleMenu('dotnet')"><span>.NET BACKEND</span><span class="menu-chevron">{{ openMenu() === 'dotnet' ? '−' : '+' }}</span></button>
+      @if (openMenu() === 'dotnet') {
+        <a routerLinkActive="active" routerLink="/efcore/learning-path" (click)="sidebarOpen.set(false)"><span>◉</span> EF Core Learning Path</a>
+        <a routerLinkActive="active" routerLink="/dotnet/aspnet-core-backend" (click)="sidebarOpen.set(false)"><span>◉</span> ASP.NET Core Backend</a>
+        <a routerLinkActive="active" routerLink="/dotnet/data-access" (click)="sidebarOpen.set(false)"><span>◉</span> EF Core & Dapper</a>
+        <a routerLinkActive="active" routerLink="/efcore/change-tracking" (click)="sidebarOpen.set(false)"><span>◉</span> EF Tracking & Concurrency</a>
+        <a routerLinkActive="active" routerLink="/efcore/query-performance" (click)="sidebarOpen.set(false)"><span>◉</span> EF Query Performance</a>
+        <a routerLinkActive="active" routerLink="/dotnet/runtime-services" (click)="sidebarOpen.set(false)"><span>◉</span> Runtime & Background Services</a>
+        <a routerLinkActive="active" routerLink="/dotnet/runtime-internals" (click)="sidebarOpen.set(false)"><span>◉</span> CLR, JIT & Assemblies</a>
+        <a routerLinkActive="active" routerLink="/dotnet/memory-performance" (click)="sidebarOpen.set(false)"><span>◉</span> Memory, GC & Performance</a>
+        <a routerLinkActive="active" routerLink="/dotnet/di-configuration-options" (click)="sidebarOpen.set(false)"><span>◉</span> DI, Configuration & Options</a>
+        <a routerLinkActive="active" routerLink="/dotnet/logging-diagnostics" (click)="sidebarOpen.set(false)"><span>◉</span> Logging & Diagnostics</a>
+        <a routerLinkActive="active" routerLink="/dotnet/caching-auth-serialization" (click)="sidebarOpen.set(false)"><span>◉</span> Caching, Auth & Serialization</a>
+      }
+      <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'databases'" (click)="toggleMenu('databases')"><span>DATA STORES</span><span class="menu-chevron">{{ openMenu() === 'databases' ? '−' : '+' }}</span></button>
+      @if (openMenu() === 'databases') {
+        <a routerLinkActive="active" routerLink="/databases/nosql-graph-data-access" (click)="sidebarOpen.set(false)"><span>◍</span> PostgreSQL, MongoDB & Neo4j</a>
+      }
+      <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'devops'" (click)="toggleMenu('devops')"><span>DEVOPS & CLOUD</span><span class="menu-chevron">{{ openMenu() === 'devops' ? '−' : '+' }}</span></button>
+      @if (openMenu() === 'devops') {
+        <a routerLinkActive="active" routerLink="/devops/learning-path" (click)="sidebarOpen.set(false)"><span>☁</span> DevOps Learning Path</a>
+        <a routerLinkActive="active" routerLink="/devops/cicd-fundamentals" (click)="sidebarOpen.set(false)"><span>☁</span> CI/CD Fundamentals</a>
+        <a routerLinkActive="active" routerLink="/devops/docker" (click)="sidebarOpen.set(false)"><span>☁</span> Docker</a>
+        <a routerLinkActive="active" routerLink="/devops/kubernetes" (click)="sidebarOpen.set(false)"><span>☁</span> Kubernetes</a>
+        <a routerLinkActive="active" routerLink="/devops/aws" (click)="sidebarOpen.set(false)"><span>☁</span> AWS</a>
+        <a routerLinkActive="active" routerLink="/devops/azure" (click)="sidebarOpen.set(false)"><span>☁</span> Azure</a>
+        <a routerLinkActive="active" routerLink="/devops/pcf-cloud-foundry" (click)="sidebarOpen.set(false)"><span>☁</span> PCF / Cloud Foundry</a>
+        <a routerLinkActive="active" routerLink="/devops/iac" (click)="sidebarOpen.set(false)"><span>☁</span> Infrastructure as Code</a>
+        <a routerLinkActive="active" routerLink="/devops/observability" (click)="sidebarOpen.set(false)"><span>☁</span> Observability</a>
+        <a routerLinkActive="active" routerLink="/devops/cloud-secrets-security" (click)="sidebarOpen.set(false)"><span>☁</span> Cloud & Secrets Security</a>
+        <a routerLinkActive="active" routerLink="/devops/capacity-cost-engineering" (click)="sidebarOpen.set(false)"><span>☁</span> Capacity & Cloud Cost</a>
+      }
+      <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'python'" (click)="toggleMenu('python')"><span>PYTHON</span><span class="menu-chevron">{{ openMenu() === 'python' ? '−' : '+' }}</span></button>
+      @if (openMenu() === 'python') {
+        <a routerLinkActive="active" routerLink="/python/learning-path" (click)="sidebarOpen.set(false)"><span>●</span> Python Learning Path</a>
+        <a routerLinkActive="active" routerLink="/python/fundamentals" (click)="sidebarOpen.set(false)"><span>◐</span> Fundamentals</a>
+        <a routerLinkActive="active" routerLink="/python/oop" (click)="sidebarOpen.set(false)"><span>◐</span> OOP</a>
+        <a routerLinkActive="active" routerLink="/python/collections" (click)="sidebarOpen.set(false)"><span>◐</span> Data Structures</a>
+        <a routerLinkActive="active" routerLink="/python/decorators-generators" (click)="sidebarOpen.set(false)"><span>◐</span> Decorators & Generators</a>
+        <a routerLinkActive="active" routerLink="/python/async" (click)="sidebarOpen.set(false)"><span>◐</span> Async (asyncio)</a>
+        <a routerLinkActive="active" routerLink="/python/error-handling" (click)="sidebarOpen.set(false)"><span>◐</span> Error Handling</a>
+        <a routerLinkActive="active" routerLink="/python/type-hints-testing" (click)="sidebarOpen.set(false)"><span>◐</span> Type Hints & Testing</a>
+        <a routerLinkActive="active" routerLink="/python/fastapi" (click)="sidebarOpen.set(false)"><span>◐</span> FastAPI</a>
+      }
+      <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'genai'" (click)="toggleMenu('genai')"><span>GENERATIVE AI</span><span class="menu-chevron">{{ openMenu() === 'genai' ? '−' : '+' }}</span></button>
+      @if (openMenu() === 'genai') {
+        <a routerLinkActive="active" routerLink="/genai/transformers" (click)="sidebarOpen.set(false)"><span>✦</span> Transformers & Attention</a>
+        <a routerLinkActive="active" routerLink="/genai/embeddings-vector-db" (click)="sidebarOpen.set(false)"><span>✦</span> Embeddings & Vector DBs</a>
+        <a routerLinkActive="active" routerLink="/genai/semantic-search" (click)="sidebarOpen.set(false)"><span>✦</span> Semantic & Hybrid Search</a>
+        <a routerLinkActive="active" routerLink="/genai/rag-fundamentals" (click)="sidebarOpen.set(false)"><span>✦</span> RAG Fundamentals</a>
+        <a routerLinkActive="active" routerLink="/genai/chunking-strategies" (click)="sidebarOpen.set(false)"><span>✦</span> Chunking Strategies</a>
+        <a routerLinkActive="active" routerLink="/genai/advanced-rag" (click)="sidebarOpen.set(false)"><span>✦</span> Advanced RAG</a>
+        <a routerLinkActive="active" routerLink="/genai/langchain-agents" (click)="sidebarOpen.set(false)"><span>✦</span> LangChain & Agents</a>
+        <a routerLinkActive="active" routerLink="/genai/mcp" (click)="sidebarOpen.set(false)"><span>✦</span> Model Context Protocol</a>
+        <a routerLinkActive="active" routerLink="/genai/production-evaluation" (click)="sidebarOpen.set(false)"><span>✦</span> Production Evaluation</a>
+        <a routerLinkActive="active" routerLink="/genai/security-guardrails" (click)="sidebarOpen.set(false)"><span>✦</span> AI Security & Guardrails</a>
+        <a routerLinkActive="active" routerLink="/genai/model-routing-cost" (click)="sidebarOpen.set(false)"><span>✦</span> Model Routing & Cost</a>
+        <a routerLinkActive="active" routerLink="/genai/prompt-structured-output" (click)="sidebarOpen.set(false)"><span>✦</span> Prompt & Structured Output</a>
+        <a routerLinkActive="active" routerLink="/genai/data-privacy-governance" (click)="sidebarOpen.set(false)"><span>✦</span> AI Privacy & Governance</a>
+      }
+      <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'leadership'" (click)="toggleMenu('leadership')"><span>LEADERSHIP</span><span class="menu-chevron">{{ openMenu() === 'leadership' ? '−' : '+' }}</span></button>
+      <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'architecture'" (click)="toggleMenu('architecture')"><span>ARCHITECTURE</span><span class="menu-chevron">{{ openMenu() === 'architecture' ? '−' : '+' }}</span></button>
+      @if (openMenu() === 'architecture') {
+        <a routerLinkActive="active" routerLink="/architecture/learning-path" (click)="sidebarOpen.set(false)"><span>◇</span> Architecture Learning Path</a>
+        <a routerLinkActive="active" routerLink="/architecture/fundamentals" (click)="sidebarOpen.set(false)"><span>◇</span> Architecture Fundamentals</a>
+        <a routerLinkActive="active" routerLink="/architecture/clean-architecture" (click)="sidebarOpen.set(false)"><span>◇</span> Clean Architecture</a>
+        <a routerLinkActive="active" routerLink="/architecture/event-driven" (click)="sidebarOpen.set(false)"><span>◇</span> Event-Driven Architecture</a>
+        <a routerLinkActive="active" routerLink="/architecture/kafka" (click)="sidebarOpen.set(false)"><span>◇</span> Apache Kafka</a>
+        <a routerLinkActive="active" routerLink="/architecture/distributed-systems" (click)="sidebarOpen.set(false)"><span>◇</span> Distributed Systems</a>
+        <a routerLinkActive="active" routerLink="/architecture/system-design" (click)="sidebarOpen.set(false)"><span>◇</span> System Design</a>
+        <a routerLinkActive="active" routerLink="/architecture/microservices" (click)="sidebarOpen.set(false)"><span>◇</span> Microservices</a>
+        <a routerLinkActive="active" routerLink="/architecture/messaging-patterns" (click)="sidebarOpen.set(false)"><span>◇</span> Messaging Patterns</a>
+        <a routerLinkActive="active" routerLink="/architecture/resilience" (click)="sidebarOpen.set(false)"><span>◇</span> Resilience Patterns</a>
+        <a routerLinkActive="active" routerLink="/architecture/cqrs" (click)="sidebarOpen.set(false)"><span>◇</span> CQRS</a>
+        <a routerLinkActive="active" routerLink="/architecture/domain-integration-events" (click)="sidebarOpen.set(false)"><span>◇</span> Domain & Integration Events</a>
+        <a routerLinkActive="active" routerLink="/architecture/outbox-inbox" (click)="sidebarOpen.set(false)"><span>◇</span> Outbox & Inbox</a>
+        <a routerLinkActive="active" routerLink="/architecture/saga-process-manager" (click)="sidebarOpen.set(false)"><span>◇</span> Saga & Process Manager</a>
+        <a routerLinkActive="active" routerLink="/architecture/bounded-contexts-acl" (click)="sidebarOpen.set(false)"><span>◇</span> Bounded Contexts & ACL</a>
+        <a routerLinkActive="active" routerLink="/architecture/modular-monolith" (click)="sidebarOpen.set(false)"><span>◇</span> Modular Monolith</a>
+        <a routerLinkActive="active" routerLink="/architecture/hexagonal-onion" (click)="sidebarOpen.set(false)"><span>◇</span> Hexagonal & Onion Architecture</a>
+        <a routerLinkActive="active" routerLink="/architecture/application-security" (click)="sidebarOpen.set(false)"><span>◇</span> Application Security</a>
+        <a routerLinkActive="active" routerLink="/architecture/reliability-engineering" (click)="sidebarOpen.set(false)"><span>◇</span> Reliability Engineering</a>
+        <a routerLinkActive="active" routerLink="/architecture/threat-modeling-owasp" (click)="sidebarOpen.set(false)"><span>◇</span> Threat Modeling & OWASP</a>
+        <a routerLinkActive="active" routerLink="/architecture/disaster-recovery" (click)="sidebarOpen.set(false)"><span>◇</span> Disaster Recovery</a>
+        <a routerLinkActive="active" routerLink="/architecture/incident-response" (click)="sidebarOpen.set(false)"><span>◇</span> Incident Response</a>
+      }
+      <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'leadership'" (click)="toggleMenu('leadership')"><span>LEADERSHIP</span><span class="menu-chevron">{{ openMenu() === 'leadership' ? '−' : '+' }}</span></button>
+      @if (openMenu() === 'leadership') {
+        <a routerLinkActive="active" routerLink="/leadership/leading-engineering-teams" (click)="sidebarOpen.set(false)"><span>◆</span> Leading Teams</a>
+        <a routerLinkActive="active" routerLink="/leadership/mentoring" (click)="sidebarOpen.set(false)"><span>◆</span> Mentoring & Growth</a>
+        <a routerLinkActive="active" routerLink="/leadership/code-reviews" (click)="sidebarOpen.set(false)"><span>◆</span> Code Reviews & Feedback</a>
+        <a routerLinkActive="active" routerLink="/leadership/stakeholder-communication" (click)="sidebarOpen.set(false)"><span>◆</span> Stakeholder Communication</a>
+        <a routerLinkActive="active" routerLink="/leadership/conflict-resolution" (click)="sidebarOpen.set(false)"><span>◆</span> Conflict Resolution</a>
+        <a routerLinkActive="active" routerLink="/leadership/technical-decisions" (click)="sidebarOpen.set(false)"><span>◆</span> Technical Decision Making</a>
+        <a routerLinkActive="active" routerLink="/leadership/agile-ceremonies" (click)="sidebarOpen.set(false)"><span>◆</span> Agile Ceremonies</a>
+        <a routerLinkActive="active" routerLink="/leadership/performance-reviews" (click)="sidebarOpen.set(false)"><span>◆</span> Performance Reviews</a>
+      }
+      <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'comparisons'" (click)="toggleMenu('comparisons')"><span>DECISION GUIDES</span><span class="menu-chevron">{{ openMenu() === 'comparisons' ? '−' : '+' }}</span></button>
+      @if (openMenu() === 'comparisons') {
+        <a routerLinkActive="active" routerLink="/comparisons/task-thread-async" (click)="sidebarOpen.set(false)"><span>⇄</span> Task vs Thread vs Async</a>
+        <a routerLinkActive="active" routerLink="/comparisons/efcore-dapper" (click)="sidebarOpen.set(false)"><span>⇄</span> EF Core vs Dapper</a>
+        <a routerLinkActive="active" routerLink="/comparisons/monolith-microservices" (click)="sidebarOpen.set(false)"><span>⇄</span> Monolith vs Microservices</a>
+        <a routerLinkActive="active" routerLink="/comparisons/kafka-rabbitmq" (click)="sidebarOpen.set(false)"><span>⇄</span> Kafka vs RabbitMQ</a>
+        <a routerLinkActive="active" routerLink="/comparisons/rest-grpc" (click)="sidebarOpen.set(false)"><span>⇄</span> REST vs gRPC vs Events</a>
+        <a routerLinkActive="active" routerLink="/comparisons/sql-nosql-graph" (click)="sidebarOpen.set(false)"><span>⇄</span> SQL vs NoSQL vs Graph</a>
+        <a routerLinkActive="active" routerLink="/comparisons/rag-finetuning" (click)="sidebarOpen.set(false)"><span>⇄</span> RAG vs Fine-tuning</a>
+        <a routerLinkActive="active" routerLink="/comparisons/docker-vm" (click)="sidebarOpen.set(false)"><span>⇄</span> Containers vs VMs</a>
+        <a routerLinkActive="active" routerLink="/comparisons/liveness-readiness" (click)="sidebarOpen.set(false)"><span>⇄</span> Health Probes</a>
+        <a routerLinkActive="active" routerLink="/comparisons/cache-database" (click)="sidebarOpen.set(false)"><span>⇄</span> Cache vs Database</a>
+        <a routerLinkActive="active" routerLink="/comparisons/events-rest" (click)="sidebarOpen.set(false)"><span>⇄</span> Events vs REST</a>
+      }
+      <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'projects'" (click)="toggleMenu('projects')"><span>BUILD REAL SYSTEMS</span><span class="menu-chevron">{{ openMenu() === 'projects' ? '−' : '+' }}</span></button>
+      @if (openMenu() === 'projects') {
+        <a routerLinkActive="active" routerLink="/projects/learning-path" (click)="sidebarOpen.set(false)"><span>▣</span> Projects Learning Path</a>
+        <a routerLinkActive="active" routerLink="/projects/ecommerce-platform" (click)="sidebarOpen.set(false)"><span>▣</span> E-commerce Platform</a>
+        <a routerLinkActive="active" routerLink="/projects/payment-platform" (click)="sidebarOpen.set(false)"><span>▣</span> Payment Platform</a>
+        <a routerLinkActive="active" routerLink="/projects/notification-platform" (click)="sidebarOpen.set(false)"><span>▣</span> Notification Platform</a>
+        <a routerLinkActive="active" routerLink="/projects/url-shortener" (click)="sidebarOpen.set(false)"><span>▣</span> URL Shortener</a>
+        <a routerLinkActive="active" routerLink="/projects/file-storage-platform" (click)="sidebarOpen.set(false)"><span>▣</span> File Storage Platform</a>
+        <a routerLinkActive="active" routerLink="/projects/banking-ledger" (click)="sidebarOpen.set(false)"><span>▣</span> Banking Ledger</a>
+      }
+      <div class="sidebar-heading">YOUR SPACE</div>
+      <a routerLinkActive="active" routerLink="/search"><span>⌕</span> Search</a>
+      <a routerLinkActive="active" routerLink="/progress"><span>▥</span> Progress</a>
+      <a routerLinkActive="active" routerLink="/bookmarks"><span>★</span> Bookmarks</a>
+      <a routerLinkActive="active" routerLink="/notes"><span>✎</span> My Notes</a>
+      <a routerLinkActive="active" routerLink="/interview"><span>▤</span> Interview Preparation</a>
+      <div class="sidebar-footer"><span class="status-dot"></span> Phase 2 learning tools<br><small>Local progress, bookmarks & notes</small></div>
+    </aside>
+    <main class="main-content"><router-outlet></router-outlet></main>
+  </div>
+  <footer class="site-footer">
+    <span>© {{ currentYear }} Rajasekhar Alluri. All rights reserved.</span>
+    <span class="footer-links">
+      <a routerLink="/about">About</a>
+      <a routerLink="/contact">Contact</a>
+      <a routerLink="/privacy">Privacy</a>
+      <a routerLink="/terms">Terms</a>
+      <a routerLink="/cookies">Cookies</a>
+      <a href="https://www.linkedin.com/in/rajasekharalluri/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:devthread.support@gmail.com">Email</a>
+    </span>
+  </footer>
+</div>

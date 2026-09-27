@@ -1,0 +1,34 @@
+@if (loading()) { <div class="loading">Loading topic...</div> } @else if (error()) { <div class="error-state">This topic could not be loaded. Check the URL or return to the learning hub.</div> } @else if (topic(); as item) {
+<div class="topic-layout">
+  <article>
+    <header class="topic-header">
+      <div class="breadcrumbs"><a routerLink="/">Academy</a> <span> / </span><a [routerLink]="['/', item.category]">{{ item.categoryTitle }}</a> <span> / </span>{{ item.title }}</div>
+      <h1 class="topic-title">{{ item.title }}</h1>
+      <p class="topic-description">{{ item.description }}</p>
+      <div class="topic-meta"><span class="badge">{{ item.difficulty }}</span><span>◷ {{ item.estimatedMinutes }} min</span>@if (item.versionMinimum) { <span class="version-badge">Applies to {{ item.versionMinimum }}</span> }</div>
+      <div class="topic-actions">
+        <div class="status-menu" aria-label="Learning status">@for (option of store.statusOptions; track option.value) { <button type="button" [class.selected]="status() === option.value" (click)="setStatus(option.value)" [attr.aria-pressed]="status() === option.value">{{ option.icon }} {{ option.label }}</button> }</div>
+        <button class="action-button" [class.bookmarked]="isBookmarked()" type="button" (click)="toggleBookmark()">{{ isBookmarked() ? '★ Bookmarked' : '☆ Bookmark' }}</button>
+        <button class="action-button" type="button" (click)="copyContent()">{{ copied() ? 'Copied' : 'Copy text' }}</button>
+        <a class="action-button" [routerLink]="['/interview', item.category, item.slug]">Interview mode</a>
+      </div>
+      <div class="topic-note">
+        <label for="topic-note">My note</label>
+        <textarea id="topic-note" rows="3" [value]="store.getNote(item.id)" (blur)="store.setNote(item.id, $any($event.target).value)" placeholder="Capture an important idea, question, or review reminder..."></textarea>
+      </div>
+    </header>
+    @if (item.prerequisites.length || item.relatedTopics.length) {
+      <section class="topic-journey" aria-label="Learning navigation">
+        @if (item.prerequisites.length) {
+          <div class="journey-group"><div class="journey-label">LEARN THESE FIRST</div><div class="journey-links">@for (link of item.prerequisites; track link.id) { <a [routerLink]="link.url"><span>←</span><strong>{{ link.title }}</strong><small>Prerequisite</small></a> }</div></div>
+        }
+        @if (item.relatedTopics.length) {
+          <div class="journey-group"><div class="journey-label">CONTINUE WITH</div><div class="journey-links">@for (link of item.relatedTopics; track link.id) { <a [routerLink]="link.url"><span>→</span><strong>{{ link.title }}</strong><small>Related topic</small></a> }</div></div>
+        }
+      </section>
+    }
+    <div class="markdown" [innerHTML]="item.contentHtml"></div>
+    <footer class="topic-footer">@if (item.previousTopic) { <a class="nav-card" [routerLink]="item.previousTopic.url"><span>← Previous</span>{{ item.previousTopic.title }}</a> } @else { <div></div> } @if (item.nextTopic) { <a class="nav-card next" [routerLink]="item.nextTopic.url"><span>Next →</span>{{ item.nextTopic.title }}</a> }</footer>
+  </article>
+</div>
+}
