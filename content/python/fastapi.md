@@ -21,17 +21,11 @@ FastAPI is an ASGI web framework that uses Python type hints and Pydantic models
 
 ```text
 HTTP request
-   ↓
 Route matching
-   ↓
 Parameter/body validation
-   ↓
 Dependencies: auth/db/config
-   ↓
 Async handler
-   ↓
 Response model serialization
-   ↓
 OpenAPI/docs
 ```
 

@@ -60,11 +60,9 @@ An order/payment workflow should not pretend one ACID transaction crosses databa
 ```text
 Order service
   └── commits Order + Outbox(OrderPlaced)
-          ↓
        Broker
           ├── Inventory service → InventoryReserved/Rejected
           └── Payment service   → PaymentCaptured/Failed
-                                      ↓
                               Order process manager
 ```
 

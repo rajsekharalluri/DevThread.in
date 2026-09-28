@@ -21,15 +21,10 @@ Practical SQL is about translating a business question into a precise result gra
 
 ```text
 Business question
-      ↓
 What is one output row?
-      ↓
 Tables + relationships
-      ↓
 Filters + NULL rules
-      ↓
 Query + plan
-      ↓
 Test edge cases and counts
 ```
 

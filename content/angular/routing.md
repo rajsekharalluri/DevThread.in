@@ -72,11 +72,8 @@ Initial bundle
   └── home
 
 User opens /admin
-       ↓
 Browser requests admin chunk
-       ↓
 Router matches/guards
-       ↓
 Admin component loads
 ```
 

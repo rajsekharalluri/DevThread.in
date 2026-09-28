@@ -27,7 +27,6 @@ Vector/keyword index
 User question
    ↓ retrieve/rerank
 Relevant context + question
-   ↓
 LLM answer + citations
 ```
 
@@ -84,11 +83,8 @@ A production RAG service needs:
 
 ```text
 Ingestion → parsing → chunking → embedding → indexing
-                                      ↓
 Question → retrieval → reranking → context budget
-                                      ↓
                               LLM + citations
-                                      ↓
                          evaluation/feedback/metrics
 ```
 

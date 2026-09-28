@@ -21,11 +21,8 @@ Agile ceremonies are coordination tools, not rituals. Standup synchronizes the t
 
 ```text
 Purpose
-  ↓
 Short focused conversation
-  ↓
 Decision/coordination/action
-  ↓
 Follow-up evidence
 ```
 

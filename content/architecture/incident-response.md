@@ -21,11 +21,8 @@ Incident response is coordinated work to reduce user impact, restore service, co
 
 ```text
 Detect → acknowledge → assess impact
-          ↓
 Contain/mitigate → communicate
-          ↓
 Recover → verify
-          ↓
 Post-incident learning/actions
 ```
 

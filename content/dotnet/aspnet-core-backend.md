@@ -60,23 +60,14 @@ Line by line:
 
 ```text
 HTTP request
-   ↓
 Forwarded headers/proxy context
-   ↓
 Exception boundary
-   ↓
 Routing
-   ↓
 Authentication → User identity
-   ↓
 Authorization → policy/resource permission
-   ↓
 Model binding + validation
-   ↓
 Controller/application service
-   ↓
 DTO serialization/status code
-   ↓
 Response logging/metrics
 ```
 

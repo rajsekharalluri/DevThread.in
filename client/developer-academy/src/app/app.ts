@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, computed } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
 import { FormsModule } from '@angular/forms';
@@ -15,14 +15,17 @@ export class App {
   readonly searchQuery = signal('');
   readonly sidebarOpen = signal(false);
   readonly spaceOpen = signal(false);
-  readonly openMenu = signal<string | null>('csharp');
+  readonly openMenu = signal<string | null>(null);
+  readonly isHome = signal(true);
   readonly currentYear = new Date().getFullYear();
   constructor() {
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(event => {
       const navigation = event as NavigationEnd;
+      const url = navigation.urlAfterRedirects;
+      this.isHome.set(url === '/' || url === '');
       if (typeof gtag === 'function') {
         gtag('event', 'page_view', {
-          page_path: navigation.urlAfterRedirects,
+          page_path: url,
           page_title: document.title,
           page_location: window.location.href
         });

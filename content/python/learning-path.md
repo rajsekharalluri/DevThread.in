@@ -23,19 +23,12 @@ Learn Python from language fundamentals through maintainable APIs, async systems
 
 ```text
 Syntax/types/functions
-   ↓
 Collections/comprehensions
-   ↓
 OOP/protocols
-   ↓
 Decorators/generators/context managers
-   ↓
 Exceptions/type hints/testing
-   ↓
 Asyncio/concurrency
-   ↓
 FastAPI/API security
-   ↓
 Production deployment/observability
 ```
 

@@ -21,7 +21,6 @@ Prompt engineering designs instructions, context, examples, constraints, and out
 
 ```text
 Task + role + trusted context + constraints
-                  ↓
               LLM response
                   ↓ schema validation
             application behavior

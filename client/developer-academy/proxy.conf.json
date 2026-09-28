@@ -1,7 +1,7 @@
 {
   "/api": {
-    "target": "https://18-61-131-74.sslip.io",
-    "secure": true,
+    "target": "http://localhost:5072",
+    "secure": false,
     "changeOrigin": true
   }
 }

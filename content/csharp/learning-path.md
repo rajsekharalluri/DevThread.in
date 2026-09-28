@@ -23,33 +23,19 @@ This is the recommended order for learning C# and .NET from beginner level to pr
 
 ```text
 1. C# Fundamentals
-   ↓
 2. Classes, Objects, and Encapsulation
-   ↓
 3. Interfaces and Dependency Inversion
-   ↓
 4. Generics and Type Safety
-   ↓
 5. Collections, Delegates, and Events
-   ↓
 6. LINQ
-   ↓
 7. Exceptions, Disposal, and Reflection
-   ↓
 8. Async/Await
-   ↓
 9. Threading, Tasks, and Synchronization
-   ↓
 10. Memory, GC, and Runtime Internals
-   ↓
 11. .NET DI, Configuration, and Options
-   ↓
 12. ASP.NET Core Backend
-   ↓
 13. EF Core, Dapper, and SQL
-   ↓
 14. Security, Logging, Diagnostics, and Caching
-   ↓
 15. Architecture, Events, and Production Systems
 ```
 

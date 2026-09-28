@@ -26,9 +26,7 @@ Question
   └── rewritten/sub-queries
           ↓ merge candidates
      reranker/cross-encoder
-          ↓
       final context
-          ↓
           LLM
 ```
 

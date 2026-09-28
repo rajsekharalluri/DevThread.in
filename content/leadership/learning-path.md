@@ -23,19 +23,12 @@ This path develops the communication, coaching, decision, delivery, and people s
 
 ```text
 Team leadership
-   ↓
 Mentoring/coaching
-   ↓
 Code review/feedback
-   ↓
 Stakeholder communication
-   ↓
 Conflict resolution
-   ↓
 Technical decisions
-   ↓
 Agile delivery
-   ↓
 Performance/career growth
 ```
 

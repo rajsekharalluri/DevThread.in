@@ -21,15 +21,10 @@ An LLM application is probabilistic; traditional pass/fail unit tests are necess
 
 ```text
 Prompt/model/retrieval change
-          ↓
 Offline evaluation dataset
-          ↓
 quality + safety + cost gate
-          ↓
 staged release
-          ↓
 production traces/feedback
-          ↓
 regression dataset
 ```
 

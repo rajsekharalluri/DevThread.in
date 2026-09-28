@@ -25,7 +25,6 @@ Technical fact
 Business consequence
       ↓ options/trade-offs
 Recommendation + ask
-      ↓
 Decision/alignment
 ```
 

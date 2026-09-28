@@ -21,11 +21,8 @@ A subquery is a query inside another query. A Common Table Expression (CTE) name
 
 ```text
 Source rows
-   ↓
 Intermediate query/subquery/CTE
-   ↓
 Join, filter, rank, or aggregate
-   ↓
 Final result
 ```
 

@@ -64,19 +64,12 @@ The important order is:
 
 ```text
 Create builder
-   ↓
 Load configuration and logging defaults
-   ↓
 Register services
-   ↓
 Build host and DI container
-   ↓
 Start hosted services/web server
-   ↓
 Accept requests
-   ↓
 Receive shutdown signal
-   ↓
 Cancel services and dispose resources
 ```
 
@@ -86,13 +79,9 @@ Configuration is layered. A later provider can override an earlier value:
 
 ```text
 appsettings.json
-        ↓
 appsettings.Production.json
-        ↓
 environment variables
-        ↓
 command-line arguments
-        ↓
 secret provider
 ```
 
@@ -248,15 +237,10 @@ When a deployment or instance stop sends a shutdown signal:
 
 ```text
 Shutdown signal
-      ↓
 Host cancels stoppingToken
-      ↓
 New work stops being accepted
-      ↓
 Current work gets a grace period
-      ↓
 Connections/resources are disposed
-      ↓
 Process exits
 ```
 

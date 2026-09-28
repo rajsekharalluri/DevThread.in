@@ -21,17 +21,11 @@ System design is a disciplined way to turn requirements into APIs, data, compone
 
 ```text
 Clarify requirements
-        ↓
 Estimate scale/quality attributes
-        ↓
 API + data model
-        ↓
 Components and communication
-        ↓
 Capacity/cache/partitioning
-        ↓
 Failure/security/observability
-        ↓
 Trade-offs and rollout
 ```
 
@@ -53,7 +47,6 @@ A reasonable first design:
 
 ```text
 Client → API → relational store (code → URL)
-             ↓
            cache for popular redirects
 ```
 
@@ -66,13 +59,11 @@ For a notification platform:
 API
  ↓ validate + persist intent
 Outbox/queue
- ↓
 Worker pool
  ├── email provider
  ├── SMS provider
  ├── retry/backoff
  └── dead-letter/replay
-        ↓
 status/audit store + metrics/traces
 ```
 

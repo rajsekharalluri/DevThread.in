@@ -25,7 +25,6 @@ Dockerfile
 Image layers
    ↓ run
 Container process + writable layer
-   ↓
 Port/volume/network configuration
 ```
 

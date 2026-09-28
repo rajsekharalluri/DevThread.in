@@ -23,21 +23,13 @@ This path moves from model fundamentals to secure, evaluated, production LLM app
 
 ```text
 Tokens/transformers
-   ↓
 Embeddings/vector search
-   ↓
 Chunking/semantic/hybrid search
-   ↓
 RAG
-   ↓
 Advanced retrieval/reranking
-   ↓
 LangChain/agents/tools
-   ↓
 MCP
-   ↓
 Structured output/model routing
-   ↓
 Evaluation/cost/privacy/security
 ```
 

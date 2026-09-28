@@ -1,20 +1,183 @@
-<section class="hero">
-  <div class="eyebrow">DEVTHREAD · ENGINEERING KNOWLEDGE</div>
-  <h1>Build the judgment behind great software.</h1>
-  <p>Learn the concepts, trade-offs, and production decisions that help you design, build, operate, and explain real systems with confidence.</p>
-  <a class="global-search hero-search" routerLink="/search"><span>⌕</span><span style="color: var(--muted)">Search topics, concepts, and interview questions</span><kbd>Ctrl K</kbd></a>
-</section>
-<section>
-  <div class="section-heading"><h2>Continue learning</h2><span>Persisted on this browser</span></div>
-  <div class="topic-grid">
-    @for (topic of topics().slice(0, 4); track topic.id) {
-      <a class="topic-card" [routerLink]="['/', topic.category, topic.slug]"><span class="badge">{{ topic.categoryTitle }}</span><h3>{{ topic.title }}</h3><p>{{ topic.description }}</p><div class="progress-line"><span [style.width.%]="percent(topic.id)"></span></div></a>
-    }
+<section class="roadmap-landing">
+  <div class="roadmap-hero">
+    <div class="eyebrow">DEVTHREAD.IN</div>
+    <h1>The Ultimate <span class="hero-accent">AI Driven Software Engineer</span> Roadmap</h1>
+    <p>Master the concepts, trade-offs, and production decisions that define great engineers and architects.</p>
+    <a class="global-search hero-search" routerLink="/search"><span>&#8981;</span><span style="color: var(--muted)">Search topics, concepts, and interview questions</span><kbd>Ctrl K</kbd></a>
   </div>
-</section>
-<section>
-  <div class="section-heading"><h2>Explore the learning paths</h2><span>{{ topics().length }} practical topics</span></div>
-  <div class="topic-grid">
-    @for (item of featured; track item.slug) { <a class="topic-card" [routerLink]="['/', item.category, item.slug]"><span class="eyebrow">{{ item.tone }}</span><h3>{{ item.label }}</h3><p>Fundamentals, internals, production behavior, trade-offs, and interview perspective.</p></a> }
+
+  <div class="roadmap-grid">
+
+    <div class="roadmap-section roadmap-blue">
+      <div class="roadmap-number">1</div>
+      <h2>Master a Programming Language</h2>
+      <p>Language fundamentals, OOP, collections, async, and runtime internals.</p>
+      <div class="roadmap-chips">
+        <a routerLink="/csharp/learning-path" class="roadmap-chip">C#</a>
+        <a routerLink="/python/learning-path" class="roadmap-chip">Python</a>
+        <a routerLink="/angular/typescript-javascript" class="roadmap-chip">TypeScript</a>
+        <a routerLink="/programming-fundamentals/oop" class="roadmap-chip">OOP</a>
+        <a routerLink="/programming-fundamentals/solid" class="roadmap-chip">SOLID</a>
+      </div>
+    </div>
+
+    <div class="roadmap-section roadmap-purple">
+      <div class="roadmap-number">2</div>
+      <h2>AI / GenAI Fundamentals</h2>
+      <p>Transformers, embeddings, RAG, agents, MCP, and production evaluation.</p>
+      <div class="roadmap-chips">
+        <a routerLink="/genai/transformers" class="roadmap-chip">LLMs & GenAI</a>
+        <a routerLink="/genai/prompt-structured-output" class="roadmap-chip">Prompt Engineering</a>
+        <a routerLink="/genai/rag-fundamentals" class="roadmap-chip">RAG</a>
+        <a routerLink="/genai/langchain-agents" class="roadmap-chip">AI Agents</a>
+        <a routerLink="/genai/embeddings-vector-db" class="roadmap-chip">Vector DB</a>
+        <a routerLink="/genai/mcp" class="roadmap-chip">MCP</a>
+      </div>
+    </div>
+
+    <div class="roadmap-section roadmap-yellow">
+      <div class="roadmap-number">3</div>
+      <h2>Design Principles</h2>
+      <p>OOP, clean code, SOLID, domain-driven design, and design patterns.</p>
+      <div class="roadmap-chips">
+        <a routerLink="/programming-fundamentals/oop" class="roadmap-chip">OOP</a>
+        <a routerLink="/programming-fundamentals/solid" class="roadmap-chip">SOLID</a>
+        <a routerLink="/architecture/design-patterns-ddd" class="roadmap-chip">Design Patterns</a>
+        <a routerLink="/architecture/clean-architecture" class="roadmap-chip">Clean Architecture</a>
+        <a routerLink="/architecture/system-design" class="roadmap-chip">System Design</a>
+      </div>
+    </div>
+
+    <div class="roadmap-section roadmap-green">
+      <div class="roadmap-number">4</div>
+      <h2>System Design & Architecture</h2>
+      <p>Microservices, event-driven, distributed systems, CQRS, and resilience.</p>
+      <div class="roadmap-chips">
+        <a routerLink="/architecture/microservices" class="roadmap-chip">Microservices</a>
+        <a routerLink="/architecture/event-driven" class="roadmap-chip">Event-Driven</a>
+        <a routerLink="/architecture/hexagonal-onion" class="roadmap-chip">Hexagonal</a>
+        <a routerLink="/architecture/distributed-systems" class="roadmap-chip">Distributed Systems</a>
+        <a routerLink="/architecture/cqrs" class="roadmap-chip">CQRS</a>
+        <a routerLink="/architecture/modular-monolith" class="roadmap-chip">Modular Monolith</a>
+      </div>
+    </div>
+
+    <div class="roadmap-section roadmap-teal">
+      <div class="roadmap-number">5</div>
+      <h2>Platform & Cloud</h2>
+      <p>Containers, Kubernetes, AWS, Azure, CI/CD, IaC, and observability.</p>
+      <div class="roadmap-chips">
+        <a routerLink="/devops/docker" class="roadmap-chip">Docker</a>
+        <a routerLink="/devops/kubernetes" class="roadmap-chip">Kubernetes</a>
+        <a routerLink="/devops/aws" class="roadmap-chip">AWS</a>
+        <a routerLink="/devops/azure" class="roadmap-chip">Azure</a>
+        <a routerLink="/devops/iac" class="roadmap-chip">IaC</a>
+        <a routerLink="/devops/cicd-fundamentals" class="roadmap-chip">CI/CD</a>
+        <a routerLink="/devops/observability" class="roadmap-chip">Observability</a>
+      </div>
+    </div>
+
+    <div class="roadmap-section roadmap-orange">
+      <div class="roadmap-number">6</div>
+      <h2>Networking & Security</h2>
+      <p>Application security, threat modeling, OWASP, cloud secrets, and incident response.</p>
+      <div class="roadmap-chips">
+        <a routerLink="/architecture/application-security" class="roadmap-chip">App Security</a>
+        <a routerLink="/architecture/threat-modeling-owasp" class="roadmap-chip">OWASP</a>
+        <a routerLink="/devops/cloud-secrets-security" class="roadmap-chip">Secrets Mgmt</a>
+        <a routerLink="/architecture/incident-response" class="roadmap-chip">Incident Response</a>
+      </div>
+    </div>
+
+    <div class="roadmap-section roadmap-indigo">
+      <div class="roadmap-number">7</div>
+      <h2>AI Engineering (Production)</h2>
+      <p>Production RAG, evaluation, guardrails, model routing, cost, and privacy.</p>
+      <div class="roadmap-chips">
+        <a routerLink="/genai/advanced-rag" class="roadmap-chip">Advanced RAG</a>
+        <a routerLink="/genai/production-evaluation" class="roadmap-chip">Evaluation</a>
+        <a routerLink="/genai/security-guardrails" class="roadmap-chip">AI Security</a>
+        <a routerLink="/genai/model-routing-cost" class="roadmap-chip">Cost Optimization</a>
+        <a routerLink="/genai/data-privacy-governance" class="roadmap-chip">AI Privacy</a>
+        <a routerLink="/genai/chunking-strategies" class="roadmap-chip">Chunking</a>
+      </div>
+    </div>
+
+    <div class="roadmap-section roadmap-red">
+      <div class="roadmap-number">8</div>
+      <h2>Backend & Data Access</h2>
+      <p>ASP.NET Core, EF Core, Dapper, DI, caching, runtime internals.</p>
+      <div class="roadmap-chips">
+        <a routerLink="/dotnet/aspnet-core-backend" class="roadmap-chip">ASP.NET Core</a>
+        <a routerLink="/dotnet/data-access" class="roadmap-chip">EF Core & Dapper</a>
+        <a routerLink="/efcore/query-performance" class="roadmap-chip">Query Perf</a>
+        <a routerLink="/dotnet/di-configuration-options" class="roadmap-chip">DI & Config</a>
+        <a routerLink="/dotnet/runtime-internals" class="roadmap-chip">CLR & JIT</a>
+        <a routerLink="/dotnet/caching-auth-serialization" class="roadmap-chip">Caching & Auth</a>
+      </div>
+    </div>
+
+    <div class="roadmap-section roadmap-amber">
+      <div class="roadmap-number">9</div>
+      <h2>Data & Databases</h2>
+      <p>SQL fundamentals, joins, indexes, transactions, NoSQL, and graph databases.</p>
+      <div class="roadmap-chips">
+        <a routerLink="/sql/fundamentals" class="roadmap-chip">SQL</a>
+        <a routerLink="/sql/joins" class="roadmap-chip">Joins</a>
+        <a routerLink="/sql/indexes-performance" class="roadmap-chip">Indexes</a>
+        <a routerLink="/sql/transactions-isolation" class="roadmap-chip">Transactions</a>
+        <a routerLink="/databases/nosql-graph-data-access" class="roadmap-chip">NoSQL & Graph</a>
+        <a routerLink="/sql/window-functions" class="roadmap-chip">Window Fns</a>
+      </div>
+    </div>
+
+    <div class="roadmap-section roadmap-rose">
+      <div class="roadmap-number">10</div>
+      <h2>Architectural Patterns</h2>
+      <p>Bounded contexts, sagas, outbox/inbox, Kafka, messaging, and resilience.</p>
+      <div class="roadmap-chips">
+        <a routerLink="/architecture/bounded-contexts-acl" class="roadmap-chip">Bounded Contexts</a>
+        <a routerLink="/architecture/saga-process-manager" class="roadmap-chip">Saga Pattern</a>
+        <a routerLink="/architecture/outbox-inbox" class="roadmap-chip">Outbox/Inbox</a>
+        <a routerLink="/architecture/kafka" class="roadmap-chip">Kafka</a>
+        <a routerLink="/architecture/messaging-patterns" class="roadmap-chip">Messaging</a>
+        <a routerLink="/architecture/resilience" class="roadmap-chip">Resilience</a>
+      </div>
+    </div>
+
+    <div class="roadmap-section roadmap-cyan">
+      <div class="roadmap-number">11</div>
+      <h2>Decision Guides</h2>
+      <p>Technology comparisons and trade-off analysis for real architecture decisions.</p>
+      <div class="roadmap-chips">
+        <a routerLink="/comparisons/monolith-microservices" class="roadmap-chip">Monolith vs Micro</a>
+        <a routerLink="/comparisons/kafka-rabbitmq" class="roadmap-chip">Kafka vs RabbitMQ</a>
+        <a routerLink="/comparisons/rest-grpc" class="roadmap-chip">REST vs gRPC</a>
+        <a routerLink="/comparisons/sql-nosql-graph" class="roadmap-chip">SQL vs NoSQL</a>
+        <a routerLink="/comparisons/rag-finetuning" class="roadmap-chip">RAG vs Fine-tune</a>
+        <a routerLink="/comparisons/efcore-dapper" class="roadmap-chip">EF vs Dapper</a>
+      </div>
+    </div>
+
+    <div class="roadmap-section roadmap-pink">
+      <div class="roadmap-number">12</div>
+      <h2>Supporting Skills</h2>
+      <p>Leadership, decision-making, communication, mentoring, and project practice.</p>
+      <div class="roadmap-chips">
+        <a routerLink="/leadership/leading-engineering-teams" class="roadmap-chip">Leadership</a>
+        <a routerLink="/leadership/technical-decisions" class="roadmap-chip">Decisions</a>
+        <a routerLink="/leadership/stakeholder-communication" class="roadmap-chip">Communication</a>
+        <a routerLink="/leadership/mentoring" class="roadmap-chip">Mentoring</a>
+        <a routerLink="/projects/learning-path" class="roadmap-chip">Build Projects</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="roadmap-footer-cta">
+    <h2>Emerging Technologies in {{ currentYear }}</h2>
+    <p>{{ topics().length }} practical topics covering fundamentals through production AI engineering.</p>
+    <a class="roadmap-start-btn" routerLink="/genai/transformers">Explore Generative AI</a>
+    <a class="roadmap-start-btn roadmap-btn-secondary" routerLink="/genai/production-evaluation">AI Engineering</a>
   </div>
 </section>

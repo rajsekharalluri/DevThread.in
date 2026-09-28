@@ -21,13 +21,9 @@ Mentoring is deliberately improving another engineer's capability and judgment o
 
 ```text
 Goal/skill gap
-      ↓
 Slightly stretching opportunity
-      ↓
 Guiding questions + safe support
-      ↓
 Practice/feedback
-      ↓
 Independent capability
 ```
 

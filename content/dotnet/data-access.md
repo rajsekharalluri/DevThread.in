@@ -21,11 +21,9 @@ EF Core and Dapper solve different parts of the data-access problem. EF Core map
 
 ```text
 Application use case
-      ↓
 Data-access boundary
       ├── EF Core: aggregate persistence/modeling
       └── Dapper: explicit SQL/projections/specialized reads
-      ↓
 Connection pool → database → execution plan
 ```
 
@@ -63,13 +61,9 @@ var rows = await connection.QueryAsync<OrderSummary>(
 
 ```text
 LINQ expression
-      ↓
 Expression tree
-      ↓
 Provider translates supported expressions to SQL
-      ↓
 Database executes SQL
-      ↓
 EF materializes/projections result
 ```
 

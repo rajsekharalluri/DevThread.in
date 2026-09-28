@@ -21,7 +21,6 @@ An index is an additional data structure that helps a database locate rows or re
 
 ```text
 Query
-  ↓
 Optimizer + statistics
   ├── table/index scan
   ├── index seek

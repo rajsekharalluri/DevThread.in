@@ -22,9 +22,7 @@ status: published
 ```text
 Configuration sources
 JSON → environment → command line → secret provider
-                         ↓
                  typed Options object
-                         ↓
 Composition root → DI container → application services
 ```
 

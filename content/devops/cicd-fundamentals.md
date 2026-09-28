@@ -21,15 +21,10 @@ Continuous Integration automatically builds and tests changes as they are integr
 
 ```text
 Commit / pull request
-        ↓
 Build + unit tests + lint/security checks
-        ↓
 Immutable artifact
-        ↓
 Staging + smoke/contract tests
-        ↓
 Approval or automated policy
-        ↓
 Production + health checks + rollback
 ```
 
@@ -57,7 +52,6 @@ Build once and promote the same artifact:
 
 ```text
 Build commit abc123 → artifact image:1.4.0
-       ↓
 Deploy image:1.4.0 to staging
        ↓ smoke/contract/load checks
 Promote image:1.4.0 to production

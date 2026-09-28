@@ -23,31 +23,18 @@ This path takes a learner from writing basic SQL to designing, tuning, securing,
 
 ```text
 SQL fundamentals
-   ↓
 SELECT/filtering/sorting/pagination
-   ↓
 Joins
-   ↓
 GROUP BY/aggregations
-   ↓
 Subqueries and CTEs
-   ↓
 Window functions
-   ↓
 Database design and normalization
-   ↓
 Transactions/isolation/locks/deadlocks
-   ↓
 Indexes and execution plans
-   ↓
 Views/procedures/triggers
-   ↓
 Query patterns and reconciliation
-   ↓
 Denormalization/read models
-   ↓
 PostgreSQL/MongoDB/Neo4j choices
-   ↓
 EF Core/Dapper production access
 ```
 

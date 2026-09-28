@@ -27,7 +27,6 @@ Retry? → only transient/idempotent failures
 Circuit opens → fail fast
   ↓ separate resources
 Bulkhead → one dependency cannot starve others
-  ↓
 Fallback/degraded response or explicit failure
 ```
 

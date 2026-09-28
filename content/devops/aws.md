@@ -21,9 +21,7 @@ AWS provides managed cloud primitives for compute, storage, databases, networkin
 
 ```text
 Users
-  ↓
 Route/CDN/load balancer
-  ↓
 Compute: EC2 / containers / Lambda
   ├── RDS relational data
   ├── S3 objects
@@ -52,9 +50,7 @@ An application stores static uploads in S3, transactional orders in RDS, runs an
 ## Professional company-level example
 ```text
 Public traffic
-    ↓
 Load balancer / CDN
-    ↓
 Private application subnets
     ├── API instances/containers
     ├── worker instances

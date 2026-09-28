@@ -43,17 +43,11 @@ A metric can count submissions/failures, and a trace can show whether time was s
 
 ```text
 Alert: checkout p99 latency increased
-       ↓
 Check error rate and deployment timeline
-       ↓
 Trace slow requests
-       ↓
 Compare spans: API / DB / payment / queue
-       ↓
 Check saturation: CPU, GC, threads, connections
-       ↓
 Mitigate: rollback, circuit/fallback, scale, or disable feature
-       ↓
 Root-cause analysis + prevention
 ```
 

@@ -21,7 +21,6 @@ Model selection is a product/architecture decision involving quality, latency, c
 
 ```text
 Request classification
-    ↓
 simple/low-risk → fast/cheap model
 complex/reasoning → stronger model
 sensitive/private → approved provider/local model

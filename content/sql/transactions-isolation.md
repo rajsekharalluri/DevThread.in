@@ -78,11 +78,8 @@ BEGIN TRANSACTION
 
 Better:
 Create idempotent payment request
-      ↓
 Call provider with idempotency key
-      ↓
 Commit local result + outbox/event
-      ↓
 Reconcile timeout/unknown outcomes
 ```
 

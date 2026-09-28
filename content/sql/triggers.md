@@ -21,7 +21,6 @@ A trigger is database code that runs automatically when an `INSERT`, `UPDATE`, o
 
 ```text
 UPDATE statement
-      ↓
 Trigger executes
       ├── audit/change
       ├── validate

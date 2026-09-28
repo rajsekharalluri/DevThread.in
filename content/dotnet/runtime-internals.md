@@ -29,9 +29,7 @@ Assembly (.dll/.exe)
    └── resources
    ↓ CLR loader
 JIT compilation
-   ↓
 Native machine code
-   ↓
 CPU execution + GC + runtime services
 ```
 

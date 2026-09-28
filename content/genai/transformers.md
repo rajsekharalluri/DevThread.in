@@ -29,7 +29,6 @@ Transformer layers
  ├── feed-forward network
  ├── residual connections
  └── normalization
- ↓
 next-token probabilities
 ```
 
@@ -68,13 +67,9 @@ A model serving system must consider:
 
 ```text
 Longer prompt
-    ↓
 More tokens
-    ↓
 More attention compute/memory
-    ↓
 Higher latency/cost
-    ↓
 Possible context-window overflow
 ```
 

@@ -23,9 +23,7 @@ Conflict can be technical, process/ownership-related, or interpersonal. The firs
 Visible argument
       ↓ ask “what is really blocked?”
 Technical disagreement? Process gap? Interpersonal behavior?
-      ↓
 Decision/process change or direct conversation
-      ↓
 Follow-up and prevention
 ```
 
@@ -37,11 +35,8 @@ Two engineers repeatedly argue about a state-management approach. The apparent c
 
 ```text
 No agreed architectural rule
-      ↓
 Repeated review disagreement
-      ↓
 Different expectations
-      ↓
 Personal frustration
 ```
 

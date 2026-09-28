@@ -21,13 +21,9 @@ Engineering leadership is creating the conditions for a team to deliver valuable
 
 ```text
 Clear goal + context
-        ↓
 Team ownership and decision space
-        ↓
 Unblocked execution
-        ↓
 Feedback/growth
-        ↓
 Reliable delivery and healthier team
 ```
 

@@ -21,13 +21,9 @@ LLM security must protect data, tools, users, and downstream systems from untrus
 
 ```text
 Untrusted user/document
-        ↓
 LLM reasoning (not a security boundary)
-        ↓
 Tool/API request
-        ↓
 Server-side auth + validation + policy
-        ↓
 Limited side effect
 ```
 

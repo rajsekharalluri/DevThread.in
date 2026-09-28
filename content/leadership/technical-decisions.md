@@ -21,13 +21,9 @@ Technical decisions rarely have one universally correct answer. They choose amon
 
 ```text
 Context + constraints
-        ↓
 Decision criteria
-        ↓
 Options + trade-offs
-        ↓
 Decision owner
-        ↓
 Record + revisit condition
 ```
 

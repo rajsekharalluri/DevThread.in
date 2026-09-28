@@ -21,11 +21,9 @@ Angular forms track values, validity, interaction state, and submission. Reactiv
 
 ```text
 User input
-   ↓
 FormControl value
    ↓ validators
 valid/invalid + touched/dirty/pending
-   ↓
 submit only valid data
 ```
 

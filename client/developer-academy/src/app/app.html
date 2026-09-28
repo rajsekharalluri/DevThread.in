@@ -7,8 +7,8 @@
     </form>
     <div class="top-actions"><button class="btn-icon" type="button" aria-label="Toggle theme" (click)="toggleTheme()">{{ store.theme() === 'dark' ? '☼' : '☾' }}</button><div class="space-menu"><button class="profile-name" type="button" aria-haspopup="menu" [attr.aria-expanded]="spaceOpen()" (click)="toggleSpace()">My Space <span class="space-chevron">{{ spaceOpen() ? '▲' : '▼' }}</span></button>@if (spaceOpen()) { <div class="space-dropdown" role="menu"><a routerLink="/progress" (click)="spaceOpen.set(false)"><span>▥</span> Progress</a><a routerLink="/bookmarks" (click)="spaceOpen.set(false)"><span>★</span> Bookmarks</a><a routerLink="/notes" (click)="spaceOpen.set(false)"><span>✎</span> My Notes</a><a routerLink="/interview" (click)="spaceOpen.set(false)"><span>▤</span> Interview Preparation</a></div> }</div></div>
   </header>
-  <div class="workspace">
-    <aside class="sidebar" [class.open]="sidebarOpen()">
+  <div class="workspace" [class.workspace-full]="isHome()">
+    <aside class="sidebar" [class.open]="sidebarOpen()" [class.sidebar-hidden]="isHome()">
       <div class="sidebar-heading">LEARNING PATHS</div>
       <a routerLinkActive="active" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="sidebarOpen.set(false)"><span>⌂</span> Learning hub</a>
       <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'foundations'" (click)="toggleMenu('foundations')"><span>FOUNDATIONS</span><span class="menu-chevron">{{ openMenu() === 'foundations' ? '−' : '+' }}</span></button>
@@ -119,6 +119,25 @@
         <a routerLinkActive="active" routerLink="/genai/model-routing-cost" (click)="sidebarOpen.set(false)"><span>✦</span> Model Routing & Cost</a>
         <a routerLinkActive="active" routerLink="/genai/prompt-structured-output" (click)="sidebarOpen.set(false)"><span>✦</span> Prompt & Structured Output</a>
         <a routerLinkActive="active" routerLink="/genai/data-privacy-governance" (click)="sidebarOpen.set(false)"><span>✦</span> AI Privacy & Governance</a>
+      }
+      <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'genai-engineer'" (click)="toggleMenu('genai-engineer')"><span>GENAI ENGINEER</span><span class="menu-chevron">{{ openMenu() === 'genai-engineer' ? '−' : '+' }}</span></button>
+      @if (openMenu() === 'genai-engineer') {
+        <a routerLinkActive="active" routerLink="/genai-engineer/programming-ai-foundations" (click)="sidebarOpen.set(false)"><span>&#9670;</span> 1. Programming & AI Foundations</a>
+        <a routerLinkActive="active" routerLink="/genai-engineer/llm-fundamentals" (click)="sidebarOpen.set(false)"><span>&#9670;</span> 2. GenAI & LLM Fundamentals</a>
+        <a routerLinkActive="active" routerLink="/genai-engineer/prompt-engineering" (click)="sidebarOpen.set(false)"><span>&#9670;</span> 3. Prompt Engineering</a>
+        <a routerLinkActive="active" routerLink="/genai-engineer/llm-app-development" (click)="sidebarOpen.set(false)"><span>&#9670;</span> 4. LLM App Development</a>
+        <a routerLinkActive="active" routerLink="/genai-engineer/embeddings-vector-search" (click)="sidebarOpen.set(false)"><span>&#9670;</span> 5. Embeddings & Vector Search</a>
+        <a routerLinkActive="active" routerLink="/genai-engineer/rag" (click)="sidebarOpen.set(false)"><span>&#9670;</span> 6. RAG</a>
+        <a routerLinkActive="active" routerLink="/genai-engineer/advanced-rag" (click)="sidebarOpen.set(false)"><span>&#9670;</span> 7. Advanced RAG</a>
+        <a routerLinkActive="active" routerLink="/genai-engineer/ai-agents" (click)="sidebarOpen.set(false)"><span>&#9670;</span> 8. AI Agents</a>
+        <a routerLinkActive="active" routerLink="/genai-engineer/agentic-multi-agent" (click)="sidebarOpen.set(false)"><span>&#9670;</span> 9. Agentic & Multi-Agent</a>
+        <a routerLinkActive="active" routerLink="/genai-engineer/mcp-tool-ecosystem" (click)="sidebarOpen.set(false)"><span>&#9670;</span> 10. MCP & AI Tools</a>
+        <a routerLinkActive="active" routerLink="/genai-engineer/fine-tuning" (click)="sidebarOpen.set(false)"><span>&#9670;</span> 11. Fine-Tuning & Adaptation</a>
+        <a routerLinkActive="active" routerLink="/genai-engineer/multimodal" (click)="sidebarOpen.set(false)"><span>&#9670;</span> 12. Multimodal GenAI</a>
+        <a routerLinkActive="active" routerLink="/genai-engineer/ai-engineering" (click)="sidebarOpen.set(false)"><span>&#9670;</span> 13. AI Engineering</a>
+        <a routerLinkActive="active" routerLink="/genai-engineer/llmops-production" (click)="sidebarOpen.set(false)"><span>&#9670;</span> 14. LLMOps & Production</a>
+        <a routerLinkActive="active" routerLink="/genai-engineer/cloud-native-ai" (click)="sidebarOpen.set(false)"><span>&#9670;</span> 15. Cloud-Native AI</a>
+        <a routerLinkActive="active" routerLink="/genai-engineer/ai-projects" (click)="sidebarOpen.set(false)"><span>&#9670;</span> 16. AI Projects & Portfolio</a>
       }
       <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'leadership'" (click)="toggleMenu('leadership')"><span>LEADERSHIP</span><span class="menu-chevron">{{ openMenu() === 'leadership' ? '−' : '+' }}</span></button>
       <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'architecture'" (click)="toggleMenu('architecture')"><span>ARCHITECTURE</span><span class="menu-chevron">{{ openMenu() === 'architecture' ? '−' : '+' }}</span></button>

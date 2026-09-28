@@ -59,15 +59,10 @@ A production API should combine:
 
 ```text
 Request validation
-    ↓
 Tenant/authorization predicate
-    ↓
 Parameterized query
-    ↓
 Projection to DTO
-    ↓
 Bounded pagination
-    ↓
 Metrics: duration, rows, logical reads, errors
 ```
 

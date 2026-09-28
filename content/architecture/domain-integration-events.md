@@ -21,13 +21,11 @@ A domain event records a meaningful fact inside a bounded context. An integratio
 
 ```text
 Aggregate changes
-      ↓
 Domain event: internal language
       ↓ transaction boundary
 Outbox/translator
       ↓ versioned contract
 Integration event: external language
-      ↓
 Other service consumers
 ```
 

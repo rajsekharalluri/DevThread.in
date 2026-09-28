@@ -3,7 +3,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TopicApiService } from '../../core/services/topic-api.service';
 import { LearningStore } from '../../core/services/learning-store.service';
-import { Topic, TopicStatus } from '../../core/models/academy.models';
+import { Topic, TopicStatus, TopicSummary } from '../../core/models/academy.models';
 
 @Component({ standalone: true, imports: [RouterLink], templateUrl: './topic-page.component.html' })
 export class TopicPageComponent {
@@ -14,10 +14,17 @@ export class TopicPageComponent {
   readonly loading = signal(true);
   readonly error = signal(false);
   readonly copied = signal(false);
+  readonly siblingTopics = signal<TopicSummary[]>([]);
+  readonly subSidebarOpen = signal(true);
+  private lastCategory = '';
   constructor() {
     this.route.params.pipe(takeUntilDestroyed()).subscribe(({ category, slug }) => {
       this.loading.set(true); this.error.set(false);
       this.api.getTopic(category, slug).subscribe({ next: topic => { this.topic.set(topic); this.store.setLastTopic(topic.id); this.loading.set(false); }, error: () => { this.error.set(true); this.loading.set(false); } });
+      if (category !== this.lastCategory) {
+        this.lastCategory = category;
+        this.api.getTopics(category).subscribe({ next: topics => this.siblingTopics.set(topics) });
+      }
     });
   }
   status(): TopicStatus { return this.topic() ? this.store.getStatus(this.topic()!.id) : 'not-started'; }

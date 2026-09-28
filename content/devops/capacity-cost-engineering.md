@@ -21,13 +21,9 @@ Capacity planning connects workload demand to CPU, memory, connections, storage,
 
 ```text
 Demand forecast
-    ↓
 resource model + bottleneck
-    ↓
 capacity/autoscale plan
-    ↓
 load test + production metrics
-    ↓
 cost/performance decision
 ```
 

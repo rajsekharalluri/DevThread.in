@@ -9,6 +9,7 @@ export class HomeComponent {
   private readonly api = inject(TopicApiService);
   readonly store = inject(LearningStore);
   readonly topics = signal<TopicSummary[]>([]);
+  readonly currentYear = new Date().getFullYear();
   readonly featured = [
     { category: 'csharp', slug: 'async-await', label: 'C# Async/Await', tone: 'Async workflows' },
     { category: 'csharp', slug: 'generics', label: 'C# Generics', tone: 'Type-safe reuse' },

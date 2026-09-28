@@ -21,11 +21,8 @@ Python is a dynamically typed, interpreted language designed for readability and
 
 ```text
 Python source
-   ↓
 CPython bytecode
-   ↓
 Python virtual machine
-   ↓
 Runtime objects + reference counting + cyclic GC
 ```
 

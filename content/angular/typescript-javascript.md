@@ -37,9 +37,7 @@ These foundations help engineers debug real UI behavior instead of treating fram
 Call stack
    ↓ synchronous JavaScript
 Microtask queue (Promises/await continuations)
-   ↓
 Task/macrotask queue (timers/events/network callbacks)
-   ↓
 Browser render opportunity
 ```
 

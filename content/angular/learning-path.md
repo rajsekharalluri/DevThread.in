@@ -23,23 +23,14 @@ This path connects browser fundamentals to production Angular application design
 
 ```text
 HTML/CSS/JavaScript/TypeScript
-   ↓
 Angular components/templates
-   ↓
 Services and dependency injection
-   ↓
 Routing and lazy loading
-   ↓
 Forms and validation
-   ↓
 RxJS and HTTP
-   ↓
 Signals/change detection/performance
-   ↓
 State management/NgRx
-   ↓
 Testing/accessibility/security
-   ↓
 Production deployment and observability
 ```
 

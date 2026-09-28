@@ -23,7 +23,6 @@ Cloud Foundry/PCF is a Platform as a Service. Developers push application code o
 Source/artifact
       ↓ cf push
 Buildpack/container staging
-      ↓
 App instances + route
       ├── service bindings
       ├── health checks
@@ -54,7 +53,6 @@ PCF app inventory
   ├── scheduled jobs
   ├── persistence/dependencies
   └── CPU/memory/traffic baseline
-        ↓
 Container image + Kubernetes Deployment
         ├── ConfigMaps/Secrets
         ├── Service/Ingress

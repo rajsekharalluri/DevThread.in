@@ -21,15 +21,10 @@ Database design translates business facts, relationships, lifecycle rules, query
 
 ```text
 Business rule
-    ↓
 Entity + identity
-    ↓
 Relationships + ownership
-    ↓
 Constraints + transactions
-    ↓
 Indexes from access patterns
-    ↓
 Safe migration + operations
 ```
 
@@ -56,13 +51,9 @@ Large schema changes use expand-and-contract:
 
 ```text
 Deploy 1: add new nullable column/table
-      ↓
 Backfill in small batches
-      ↓
 Deploy 2: application writes both/reads compatible shape
-      ↓
 Verify all consumers migrated
-      ↓
 Deploy 3: enforce constraint/remove old shape
 ```
 

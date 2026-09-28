@@ -82,7 +82,6 @@ One database transaction
    └── insert outbox row
           ↓ commit
 Relay publishes outbox event
-          ↓
 Consumers process/retry/replay
 ```
 

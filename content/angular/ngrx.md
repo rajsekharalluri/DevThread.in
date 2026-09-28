@@ -26,7 +26,6 @@ Component
 Store → reducer → new immutable state
    │
    └── effect → HTTP/side effect → success/failure action
-                                      ↓
                                    reducer
 ```
 

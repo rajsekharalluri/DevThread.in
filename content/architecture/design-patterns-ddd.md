@@ -21,7 +21,6 @@ A design pattern is a named solution to a recurring design problem. Domain-Drive
 
 ```text
 Business language
-      ↓
 Bounded context
       ├── entities/value objects
       ├── aggregate consistency boundary

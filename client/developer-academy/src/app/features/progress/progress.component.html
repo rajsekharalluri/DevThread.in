@@ -1,1 +1,104 @@
-<section class="search-page"><div class="breadcrumbs"><a routerLink="/">Academy</a> / Progress</div><div class="section-heading"><h1>Learning progress</h1><button class="action-button" type="button" (click)="clearData()">Clear local learning data</button></div><p style="color:var(--muted)">Your learning state is stored in this browser and remains until site data is cleared. Clearing requires confirmation.</p><div class="topic-grid"><div class="topic-card"><span class="eyebrow">COMPLETION</span><h3>{{ percent() }}%</h3><p>{{ store.count('completed') }} completed topics out of {{ topics().length }}.</p><div class="progress-line"><span [style.width.%]="percent()"></span></div></div>@for (option of store.statusOptions; track option.value) { <div class="topic-card"><span class="eyebrow">{{ option.label }}</span><h3>{{ statusCount(option.value) }}</h3><p>Topics marked {{ option.label.toLowerCase() }}.</p></div> }</div><div class="section-heading"><h2>Progress by track</h2></div><div class="topic-grid">@for (category of categories(); track category) { <div class="topic-card"><span class="eyebrow">{{ categoryTitle(category) }}</span><h3>{{ categoryPercent(category) }}%</h3><div class="progress-line"><span [style.width.%]="categoryPercent(category)"></span></div></div> }</div><div class="section-heading"><h2>Recommended next</h2><span>Based on your current learning activity</span></div>@for (topic of recommendations(); track topic.id) { <a class="search-result" [routerLink]="['/', topic.category, topic.slug]"><div class="result-meta">{{ topic.categoryTitle }} · {{ topic.difficulty }}</div><h3>{{ topic.title }}</h3><p>{{ topic.description }}</p></a> }<div class="section-heading"><h2>Review queue</h2></div>@for (topic of topics(); track topic.id) { @if (store.getStatus(topic.id) !== 'not-started' && store.getStatus(topic.id) !== 'completed') { <a class="search-result" [routerLink]="['/', topic.category, topic.slug]"><div class="result-meta">{{ store.getStatus(topic.id) }} · {{ topic.categoryTitle }}</div><h3>{{ topic.title }}</h3><p>{{ topic.description }}</p></a> } }</section>
+<section class="search-page">
+  <div class="breadcrumbs"><a routerLink="/">Academy</a> / Progress</div>
+  <div class="section-heading">
+    <h1>Learning progress</h1>
+    <button class="action-button" type="button" (click)="clearData()">Clear local learning data</button>
+  </div>
+  <p style="color:var(--muted)">Your learning state is stored in this browser and remains until site data is cleared. Clearing requires confirmation.</p>
+
+  <div class="topic-grid">
+    <div class="topic-card">
+      <span class="eyebrow">COMPLETION</span>
+      <h3>{{ percent() }}%</h3>
+      <p>{{ store.count('completed') }} completed topics out of {{ topics().length }}.</p>
+      <div class="progress-line"><span [style.width.%]="percent()"></span></div>
+    </div>
+    @for (option of store.statusOptions; track option.value) {
+      <div class="topic-card status-card" [class.status-card-active]="selectedStatus() === option.value" (click)="toggleStatus(option.value)" style="cursor:pointer">
+        <span class="eyebrow">{{ option.label }}</span>
+        <h3>{{ statusCount(option.value) }}</h3>
+        <p>Topics marked {{ option.label.toLowerCase() }}.</p>
+      </div>
+    }
+  </div>
+
+  @if (selectedStatus()) {
+    <div class="section-heading">
+      <h2>{{ statusLabel(selectedStatus()!) }} topics</h2>
+      <span>{{ filteredCount() }} topic{{ filteredCount() === 1 ? '' : 's' }}</span>
+    </div>
+    <div class="status-filter-bar">
+      <div class="status-search-box">
+        <span class="status-search-icon">&#8981;</span>
+        <input type="text" placeholder="Search {{ statusLabel(selectedStatus()!).toLowerCase() }} topics..." [value]="statusSearch()" (input)="onSearchChange($any($event.target).value)" />
+      </div>
+    </div>
+    @if (filteredCount() === 0) {
+      <p style="color:var(--muted)">
+        @if (statusSearch()) {
+          No matching topics found. Try a different search.
+        } @else {
+          No topics marked as {{ statusLabel(selectedStatus()!).toLowerCase() }} yet.
+        }
+      </p>
+    }
+    @for (topic of pagedTopics(); track topic.id) {
+      <a class="search-result" [routerLink]="['/', topic.category, topic.slug]">
+        <div class="result-meta">{{ topic.categoryTitle }} · {{ topic.difficulty }}</div>
+        <h3>{{ topic.title }}</h3>
+        <p>{{ topic.description }}</p>
+      </a>
+    }
+    @if (totalPages() > 1) {
+      <div class="progress-pagination">
+        <button class="page-btn" [disabled]="statusPage() === 1" (click)="goToPage(statusPage() - 1)">&lsaquo; Prev</button>
+        @for (p of pageNumbers(); track $index) {
+          @if (p === '...') {
+            <span class="page-ellipsis">...</span>
+          } @else {
+            <button class="page-btn" [class.page-btn-active]="p === statusPage()" (click)="goToPage(p)">{{ p }}</button>
+          }
+        }
+        <button class="page-btn" [disabled]="statusPage() === totalPages()" (click)="goToPage(statusPage() + 1)">Next &rsaquo;</button>
+      </div>
+    }
+  }
+
+  <div class="section-heading">
+    <h2>Progress by track</h2>
+  </div>
+  <div class="topic-grid">
+    @for (category of categories(); track category) {
+      <div class="topic-card">
+        <span class="eyebrow">{{ categoryTitle(category) }}</span>
+        <h3>{{ categoryPercent(category) }}%</h3>
+        <div class="progress-line"><span [style.width.%]="categoryPercent(category)"></span></div>
+      </div>
+    }
+  </div>
+
+  <div class="section-heading">
+    <h2>Recommended next</h2>
+    <span>Based on your current learning activity</span>
+  </div>
+  @for (topic of recommendations(); track topic.id) {
+    <a class="search-result" [routerLink]="['/', topic.category, topic.slug]">
+      <div class="result-meta">{{ topic.categoryTitle }} · {{ topic.difficulty }}</div>
+      <h3>{{ topic.title }}</h3>
+      <p>{{ topic.description }}</p>
+    </a>
+  }
+
+  <div class="section-heading">
+    <h2>Review queue</h2>
+  </div>
+  @for (topic of topics(); track topic.id) {
+    @if (store.getStatus(topic.id) !== 'not-started' && store.getStatus(topic.id) !== 'completed') {
+      <a class="search-result" [routerLink]="['/', topic.category, topic.slug]">
+        <div class="result-meta">{{ store.getStatus(topic.id) }} · {{ topic.categoryTitle }}</div>
+        <h3>{{ topic.title }}</h3>
+        <p>{{ topic.description }}</p>
+      </a>
+    }
+  }
+</section>

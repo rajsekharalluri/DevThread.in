@@ -21,7 +21,6 @@ A saga coordinates a business workflow across local transactions in multiple ser
 
 ```text
 OrderPlaced
-    ↓
 ReserveInventory
     ↓ success                 ↓ failure
 AuthorizePayment              CancelOrder

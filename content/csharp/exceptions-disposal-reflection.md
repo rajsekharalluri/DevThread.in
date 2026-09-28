@@ -65,9 +65,7 @@ await response.CopyToAsync(destination, ct);
 
 ```text
 using / await using
-        ↓
 try/finally cleanup
-        ↓
 resource released even on exception
 ```
 

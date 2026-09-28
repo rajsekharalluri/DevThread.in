@@ -23,9 +23,7 @@ Denormalization stores derived or repeated data intentionally to make a known re
 Source of truth
       ↓ event/transaction
 Projection builder
-      ↓
 Read model optimized for one feature
-      ↓
 Fast query + explicit freshness
 ```
 
@@ -48,16 +46,13 @@ A dashboard can read one summary row instead of aggregating millions of orders o
 ## Professional company-level example
 ```text
 OrderPaid event
-     ↓
 Idempotent projector
      ├── update CustomerOrderSummary
      ├── record checkpoint/lag
      └── expose RefreshedAt
 
 Nightly reconciliation
-     ↓
 Compare projection with source-of-truth aggregate
-     ↓
 Repair/rebuild if needed
 ```
 

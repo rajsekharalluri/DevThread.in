@@ -21,11 +21,8 @@ Change detection is Angular's process for deciding when bindings need to be eval
 
 ```text
 signal.set/update
-      ↓
 consumers marked stale
-      ↓
 Angular schedules update
-      ↓
 affected template bindings refresh
 ```
 

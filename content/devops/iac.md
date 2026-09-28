@@ -60,7 +60,6 @@ Pull request
 Plan artifact
   ↓ review/approval
 Apply exact reviewed plan
-  ↓
 Drift/outputs/monitoring
 ```
 

@@ -23,23 +23,14 @@ This path moves from collaborative delivery to containerized, observable, secure
 
 ```text
 Git/source control
-   ↓
 CI/CD and release engineering
-   ↓
 Docker/containerization
-   ↓
 Kubernetes/managed platforms
-   ↓
 AWS/Azure services
-   ↓
 Infrastructure as Code
-   ↓
 Observability
-   ↓
 Security/secrets
-   ↓
 Capacity/cost
-   ↓
 Migration/disaster recovery
 ```
 

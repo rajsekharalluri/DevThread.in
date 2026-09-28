@@ -63,11 +63,9 @@ Idempotency lookup
   ├── existing completed → return saved result
   ├── existing pending   → return current state
   └── new                → create pending operation
-                              ↓
                          provider call
                               ├── approved/declined
                               └── timeout/unknown
-                                      ↓
                                 reconciliation job
 ```
 

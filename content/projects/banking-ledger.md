@@ -26,7 +26,6 @@ Ledger transaction
    ├── debit entry
    ├── credit entry
    └── transaction reference
-   ↓
 Balance projection + audit/reconciliation
 ```
 

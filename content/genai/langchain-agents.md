@@ -21,13 +21,9 @@ A chain is a fixed sequence of model/retrieval/tool steps. An agent is a model-d
 
 ```text
 User goal
-   ↓
 LLM chooses tool + arguments
-   ↓
 Tool executes safely
-   ↓
 Tool result returns to LLM
-   ↓
 LLM chooses next step or final answer
 ```
 

@@ -23,23 +23,14 @@ This path develops architecture judgment from boundaries and design principles t
 
 ```text
 Architecture fundamentals
-   ↓
 Clean/Hexagonal/Layered architecture
-   ↓
 Patterns and DDD
-   ↓
 Bounded contexts/modular monolith
-   ↓
 CQRS/events/outbox
-   ↓
 Sagas/microservices
-   ↓
 Kafka/messaging
-   ↓
 Distributed systems/resilience
-   ↓
 Security/reliability
-   ↓
 System design/projects
 ```
 

@@ -21,13 +21,9 @@ A performance review should summarize an ongoing feedback relationship, not reve
 
 ```text
 Regular evidence/feedback
-         ↓
 Review summary
-         ↓
 Specific growth expectation
-         ↓
 Opportunity + support
-         ↓
 Evidence/revisit
 ```
 

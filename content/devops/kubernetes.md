@@ -21,13 +21,9 @@ Kubernetes is a declarative container orchestration platform. You declare desire
 
 ```text
 Manifest: “3 healthy API replicas”
-             ↓
 Kubernetes API
-             ↓
 Scheduler assigns Pods to nodes
-             ↓
 Controllers create/restart/replace Pods
-             ↓
 Service routes traffic to ready Pods
 ```
 

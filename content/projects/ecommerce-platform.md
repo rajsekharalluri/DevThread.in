@@ -75,11 +75,9 @@ Submit order
 Reserve inventory
   ├── rejected → OrderRejected
   └── reserved
-       ↓
 Authorize payment
   ├── failed → release inventory + OrderPaymentFailed
   └── captured → OrderConfirmed
-       ↓
 Notifications/search/analytics react asynchronously
 ```
 

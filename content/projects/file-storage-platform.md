@@ -25,7 +25,6 @@ Client → API authorize metadata
        Object storage
           ↓ event
        Scan/metadata worker
-          ↓
        Available/quarantined file
 ```
 

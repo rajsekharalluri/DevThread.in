@@ -89,13 +89,9 @@ A production component should focus on presentation and user interaction. API ac
 
 ```text
 State/input changes
-      ↓
 Angular schedules change detection
-      ↓
 Template bindings are evaluated
-      ↓
 DOM instructions update only necessary nodes
-      ↓
 Browser paints UI
 ```
 

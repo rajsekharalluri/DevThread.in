@@ -23,7 +23,6 @@ Generics allow one algorithm/type to work with many types while preserving compi
 Generic algorithm<T>
         ↓ type supplied
 Algorithm<Order>     or     Algorithm<Customer>
-        ↓
 compiler checks operations and assignments
 ```
 

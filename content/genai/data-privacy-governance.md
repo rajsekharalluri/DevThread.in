@@ -21,13 +21,9 @@ AI governance defines what data/models/tools may be used, who can access them, h
 
 ```text
 Data classification
-      ↓
 Approved model/provider policy
-      ↓
 Access/retention controls
-      ↓
 Evaluation + human oversight
-      ↓
 Audit/incident/review
 ```
 

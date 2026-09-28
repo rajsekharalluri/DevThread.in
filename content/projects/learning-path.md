@@ -23,15 +23,10 @@ This track converts individual concepts into complete production-style systems. 
 
 ```text
 URL Shortener
-   ↓
 Notification Platform
-   ↓
 E-commerce Platform
-   ↓
 Payment Platform
-   ↓
 File Storage Platform
-   ↓
 Banking Ledger
 ```
 
@@ -40,17 +35,11 @@ For each project, read in this order:
 
 ```text
 Requirements
-   ↓
 Quality attributes
-   ↓
 Architecture/data
-   ↓
 API and execution flow
-   ↓
 Failure/security decisions
-   ↓
 Scale/cost/recovery
-   ↓
 Interview explanation
 ```
 

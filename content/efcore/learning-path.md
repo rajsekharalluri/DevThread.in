@@ -23,21 +23,13 @@ This track connects C# application code to relational database behavior and prod
 
 ```text
 SQL/relational foundations
-   ↓
 DbContext/DbSet/unit of work
-   ↓
 LINQ query translation
-   ↓
 Entities/relationships/configuration
-   ↓
 Change tracking/loading
-   ↓
 Migrations/transactions/concurrency
-   ↓
 Projection/paging/performance
-   ↓
 EF Core versus Dapper/raw SQL
-   ↓
 Production testing/observability
 ```
 

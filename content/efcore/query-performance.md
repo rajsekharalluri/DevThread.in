@@ -63,7 +63,6 @@ Where / Select / OrderBy / Include
 ToListAsync / FirstAsync / CountAsync
         ↓ execute SQL
 Database result
-        ↓
 .NET value/entity/materialized result
 ```
 
@@ -153,17 +152,11 @@ All async methods should receive the request/worker `CancellationToken`. Cancell
 
 ```text
 Capture endpoint/parameters
-      ↓
 Log generated SQL safely
-      ↓
 Capture actual database plan
-      ↓
 Compare estimated/actual rows
-      ↓
 Check query count/materialization
-      ↓
 Check indexes/locks/memory
-      ↓
 Fix one cause and re-measure
 ```
 
