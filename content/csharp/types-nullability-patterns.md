@@ -10,7 +10,7 @@ version:
   minimum: "C# 12 / .NET 8+"
 prerequisites: [csharp-fundamentals, csharp-classes]
 tags: [csharp, value-types, reference-types, boxing, nullable, pattern-matching]
-relatedTopics: [csharp-generics, csharp-collections]
+relatedTopics: [csharp-generics, csharp-collections-delegates-events]
 order: 70
 status: published
 ---

@@ -117,6 +117,7 @@ Build an `OrderService` with an injectable `InjectionToken` for a configurable A
 - **[L2]** What is an `InjectionToken`, and when would you use one instead of a class?
 - **[L2]** How does Angular's injector hierarchy affect whether a service is shared or per-component?
 - **[L3]** How would you design service scoping in a large app with multiple lazy-loaded feature areas?
+- **[L3]** How do you swap implementations of a service per environment or per feature (for example, a real vs mock payment gateway) without changing consuming components?
 
 ## Interview Answers
 1. **[L1] What does `@Injectable({ providedIn: 'root' })` do?**
@@ -129,6 +130,8 @@ Build an `OrderService` with an injectable `InjectionToken` for a configurable A
    Angular resolves an injection request by walking up from where it was requested (a component, then its parent, up to the root injector) until it finds a matching provider. A service registered with `providedIn: 'root'` is found and shared at the top level, giving one instance for the whole app. A service listed in a specific component's own `providers` array is registered at *that* component's injector level, so every instance of that component gets its own separate instance of the service, scoped to that component and its children.
 5. **[L3] How would you design service scoping in a large app with multiple lazy-loaded feature areas?**
    Keep genuinely global, cross-cutting services (auth state, a shared HTTP interceptor, application-wide configuration) at the root level, but scope feature-specific state services to the lazy-loaded route/feature they belong to (via that route's own providers), so two different feature areas don't accidentally share or leak state through a singleton that should have been feature-scoped. This also improves lazy-loading behavior, since feature-scoped services and their dependencies can be included only in that feature's bundle rather than the main bundle.
+6. **[L3] How do you swap implementations of a service per environment or per feature without changing consuming components?**
+   Have components depend on an abstraction — an abstract class or an `InjectionToken<PaymentGateway>` — rather than a concrete class, then choose the implementation in provider configuration: `{ provide: PaymentGateway, useClass: environment.useMockPayments ? MockPaymentGateway : StripePaymentGateway }` in `app.config.ts`, or `useFactory` when the choice depends on runtime configuration or other injected services. For feature-specific behavior, register a different provider in that lazy route's `providers` array so only that feature area resolves the alternative implementation. Consuming components keep calling `inject(PaymentGateway)` and never change, tests override the same token with `TestBed.overrideProvider`, and the decision stays centralized and reviewable in one place.
 
 ## Senior Developer Perspective
 Dependency injection is fundamentally about controlling where an implementation decision is made — components should ask for a capability (a token/interface) and never construct dependencies themselves. Senior engineers are deliberate about service scope (root vs. feature vs. component) since getting this wrong is a common source of subtle state-leakage bugs that only appear once an app has multiple instances of a feature on screen at once.

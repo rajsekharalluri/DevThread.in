@@ -143,6 +143,7 @@ Model an `Order` that prevents adding a line with a non-positive quantity and pr
 - **[L2]** Why is composition often preferred over inheritance?
 - **[L2]** How does virtual dispatch enable polymorphism, and what does it cost?
 - **[L3]** How do you prevent domain objects from becoming anemic in a large codebase?
+- **[L3]** How would you refactor a deep inheritance hierarchy that has become hard to change?
 
 ## Interview Answers
 1. **[L1] What are the four commonly cited OOP principles?**
@@ -155,6 +156,8 @@ Model an `Order` that prevents adding a line with a non-positive quantity and pr
    Virtual dispatch resolves which method implementation to call at runtime based on the object's actual type, via a lookup through the type's method table, rather than at compile time based on the declared/static type. This is what allows one call site (`payment.AuthorizeAsync(...)`) to run different code for `CreditCardPayment` vs `PayPalPayment`. The cost is a small indirect call overhead versus a direct/non-virtual call, and it can inhibit some compiler/JIT inlining optimizations — usually negligible next to I/O costs, but relevant in extremely hot code paths.
 5. **[L3] How do you prevent domain objects from becoming anemic in a large codebase?**
    Push behavior and validation into the object that owns the relevant state instead of into external "manager" or "service" classes that just read and write public properties. Concretely: make collections private with controlled mutation methods, compute derived values as properties/methods on the object rather than externally, and treat any new business rule as a question of "which object should own this?" rather than "which service should implement this?" first. Code review discipline (rejecting new public setters without justification) and periodically auditing whether services are doing work that belongs on an entity both help sustain this over time.
+6. **[L3] How would you refactor a deep inheritance hierarchy that has become hard to change?**
+   First, pin down current behavior with characterization tests around the public entry points, because deep hierarchies hide overrides and base-class side effects. Then map what each level actually contributes and separate the axes of variation that were forced into one tree — for example `Report -> PdfReport -> ScheduledPdfReport -> EmailedScheduledPdfReport` mixes output format, scheduling, and delivery. Extract each axis into its own interface with small implementations (`IReportRenderer`, `ISchedule`, `IDeliveryChannel`) and compose them in one `Report` class via constructor injection (Strategy/Decorator patterns), replacing template-method overrides with injected collaborators. Migrate incrementally: introduce the composed version next to the old one, move callers over one at a time, keep the tests green, and delete the old subclasses when nothing uses them. The result is flat, testable combinations instead of a class for every combination of features.
 
 ## Senior Developer Perspective
 OOP is a tool for managing change, not a goal in itself. Senior engineers optimize for stable, well-defined boundaries, explicit invariants enforced at the object level, and low coupling — and they recognize when a "simple function" is genuinely simpler than a class, rather than reflexively wrapping everything in objects.

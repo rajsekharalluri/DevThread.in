@@ -8,7 +8,7 @@ difficulty: advanced
 estimatedMinutes: 75
 version:
   minimum: "C# 12 / .NET 8+"
-prerequisites: [csharp-async-await, csharp-collections]
+prerequisites: [csharp-async-await, csharp-collections-delegates-events]
 tags: [csharp, threading, task, valuetask, cancellation, parallel, lock]
 relatedTopics: [csharp-types-nullability-patterns, architecture-resilience]
 order: 90

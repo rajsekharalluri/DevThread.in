@@ -8,7 +8,7 @@ difficulty: advanced
 estimatedMinutes: 50
 version:
   minimum: "C# 12 / .NET 8+"
-prerequisites: [csharp-interfaces, csharp-collections]
+prerequisites: [csharp-interfaces, csharp-collections-delegates-events]
 tags: [csharp, generics, constraints, variance, boxing, type-safety]
 relatedTopics: [csharp-types-nullability-patterns, csharp-linq]
 order: 40

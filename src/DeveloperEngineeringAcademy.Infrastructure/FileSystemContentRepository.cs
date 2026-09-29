@@ -64,7 +64,7 @@ public sealed class FileSystemContentRepository : IContentRepository
                 .Select(match => StripTags(match.Groups["answer"].Value))
                 .ToList()
             : [];
-        var interviewQuestions = InterviewQuestionRegex.Matches(html)
+        var interviewQuestions = InterviewQuestionRegex.Matches(InterviewQuestionsSection(html))
             .Select((match, questionIndex) => new InterviewQuestion(
                 match.Groups["level"].Value.ToUpperInvariant(),
                 StripTags(match.Groups["question"].Value),
@@ -81,6 +81,14 @@ public sealed class FileSystemContentRepository : IContentRepository
     }
 
     private static string StripTags(string value) => Regex.Replace(value, "<.*?>", string.Empty);
+
+    private static string InterviewQuestionsSection(string html)
+    {
+        var start = html.IndexOf(">Interview Questions</h2>", StringComparison.OrdinalIgnoreCase);
+        if (start < 0) return html;
+        var end = html.IndexOf("<h2", start, StringComparison.OrdinalIgnoreCase);
+        return end < 0 ? html[start..] : html[start..end];
+    }
 
     private sealed class FrontMatter
     {

@@ -8,7 +8,7 @@ difficulty: intermediate
 estimatedMinutes: 55
 version:
   minimum: "C# 12 / .NET 8+"
-prerequisites: [csharp-collections, csharp-generics]
+prerequisites: [csharp-collections-delegates-events, csharp-generics]
 tags: [csharp, linq, ienumerable, iqueryable, expressions, queries]
 relatedTopics: [dotnet-data-access, sql-query-examples]
 order: 50

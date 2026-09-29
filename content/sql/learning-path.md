@@ -73,10 +73,11 @@ After completing this path, you should be able to:
 
 ## Interview Answers
 1. Learn querying, joins, aggregation, modeling, transactions, performance, database objects, and alternative storage in that order.
-2. SQL describes a result; the optimizer chooses scans/seeks/joins/sorts. Correct syntax can still produce an unacceptable plan.
-3. Schema and transactions define correctness; indexes/plans define physical cost; one cannot safely optimize what one does not model correctly.
-4. Live SQL is best when freshness/cost are acceptable; read models help repeated expensive or differently shaped reads with explicit staleness/rebuild rules.
-5. Review correctness/grain/security, test edge cases, inspect actual plan/rows/reads/locks, measure at scale, and document operational behavior.
+2. Grain defines what one output row represents (one order, one customer per day, one product per region). Without it, joins silently multiply rows, aggregates double-count, and the query answers a different question than intended; stating the grain first tells you which joins, GROUP BY keys, and filters are valid.
+3. SQL describes a result; the optimizer chooses scans/seeks/joins/sorts. Correct syntax can still produce an unacceptable plan.
+4. Schema and transactions define correctness; indexes/plans define physical cost; one cannot safely optimize what one does not model correctly.
+5. Live SQL is best when freshness/cost are acceptable; read models help repeated expensive or differently shaped reads with explicit staleness/rebuild rules.
+6. Review correctness/grain/security, test edge cases, inspect actual plan/rows/reads/locks, measure at scale, and document operational behavior.
 
 ## Expert perspective
 SQL mastery is not memorizing clauses. It is understanding data grain, integrity, concurrency, physical cost, and operational recovery well enough to make a safe decision under real workload.

@@ -89,6 +89,7 @@ Model an e-commerce system in PostgreSQL, MongoDB, and Neo4j for three different
 - **[L2]** What operational cost does adding a second datastore create?
 - **[L2]** How would you build a rebuildable MongoDB read projection from PostgreSQL events?
 - **[L3]** How do you decide whether polyglot persistence is justified?
+- **[L3]** How would you model the same order domain in PostgreSQL, MongoDB, and Neo4j, and what trade-offs does each model create?
 
 ## Interview Answers
 1. **[L1]** Choose a document database when data is naturally aggregate-shaped, read/written together, schema-flexible, and does not need extensive relational joins/constraints.
@@ -96,6 +97,7 @@ Model an e-commerce system in PostgreSQL, MongoDB, and Neo4j for three different
 3. **[L2]** It adds deployment, backup/restore, monitoring, security, upgrades, expertise, data synchronization, and incident-response responsibilities.
 4. **[L2]** Publish durable events from the source transaction, consume idempotently, write the projection, track lag, and support full rebuild from source history.
 5. **[L3]** Compare measured query needs, consistency, scale, team capability, and total operational cost. Add a datastore only when its unique capability produces more value than its long-term complexity.
+6. **[L3]** In **PostgreSQL**, normalize into `customers`, `orders`, `order_items`, and `products` tables with foreign keys and transactions; this gives strong integrity, flexible ad-hoc queries and reporting, but reading a full order needs joins. In **MongoDB**, model the order as one aggregate document with embedded line items and a snapshot of product name and price at purchase time, referencing the customer by ID; reads and writes of a whole order are a single fast operation and the schema can evolve easily, but cross-order analytics, updates to shared data, and multi-document consistency are harder, and duplicated fields must be kept correct deliberately. In **Neo4j**, model `(:Customer)-[:PLACED]->(:Order)-[:CONTAINS]->(:Product)` so questions like "customers who bought products bought by people similar to this customer" become short traversals; relationship queries are fast and expressive, but aggregate-heavy reporting and bulk transactional writes are less natural. A common production design keeps PostgreSQL as the system of record and projects into MongoDB for read-optimized order views and Neo4j for recommendation or fraud graphs.
 
 ## Senior Developer Perspective
 Database choice is an access-pattern and ownership decision. Senior engineers can explain why a particular workload needs PostgreSQL, MongoDB, or Neo4j, how it will be operated, and what happens when the derived data is stale or corrupt.
