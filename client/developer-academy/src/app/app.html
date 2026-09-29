@@ -13,6 +13,7 @@
       <a routerLinkActive="active" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="sidebarOpen.set(false)"><span>⌂</span> Learning hub</a>
       <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'foundations'" (click)="toggleMenu('foundations')"><span>FOUNDATIONS</span><span class="menu-chevron">{{ openMenu() === 'foundations' ? '−' : '+' }}</span></button>
       @if (openMenu() === 'foundations') {
+        <a routerLinkActive="active" routerLink="/programming-fundamentals/learning-path" (click)="sidebarOpen.set(false)"><span>◈</span> Fundamentals Learning Path</a>
         <a routerLinkActive="active" routerLink="/programming-fundamentals/oop" (click)="sidebarOpen.set(false)"><span>◈</span> Object-oriented design</a>
         <a routerLinkActive="active" routerLink="/programming-fundamentals/solid" (click)="sidebarOpen.set(false)"><span>◈</span> SOLID principles</a>
       }
@@ -62,25 +63,31 @@
       }
       <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'dotnet'" (click)="toggleMenu('dotnet')"><span>.NET BACKEND</span><span class="menu-chevron">{{ openMenu() === 'dotnet' ? '−' : '+' }}</span></button>
       @if (openMenu() === 'dotnet') {
+        <a routerLinkActive="active" routerLink="/dotnet/learning-path" (click)="sidebarOpen.set(false)"><span>◉</span> .NET Backend Learning Path</a>
         <a routerLinkActive="active" routerLink="/efcore/learning-path" (click)="sidebarOpen.set(false)"><span>◉</span> EF Core Learning Path</a>
         <a routerLinkActive="active" routerLink="/dotnet/aspnet-core-backend" (click)="sidebarOpen.set(false)"><span>◉</span> ASP.NET Core Backend</a>
         <a routerLinkActive="active" routerLink="/dotnet/data-access" (click)="sidebarOpen.set(false)"><span>◉</span> EF Core & Dapper</a>
         <a routerLinkActive="active" routerLink="/efcore/change-tracking" (click)="sidebarOpen.set(false)"><span>◉</span> EF Tracking & Concurrency</a>
+        <a routerLinkActive="active" routerLink="/efcore/loading-dbcontext-lifetime" (click)="sidebarOpen.set(false)"><span>◉</span> EF Loading, N+1 & DbContext</a>
         <a routerLinkActive="active" routerLink="/efcore/query-performance" (click)="sidebarOpen.set(false)"><span>◉</span> EF Query Performance</a>
+        <a routerLinkActive="active" routerLink="/efcore/migrations-deployment" (click)="sidebarOpen.set(false)"><span>◉</span> EF Migrations & Deployment</a>
         <a routerLinkActive="active" routerLink="/dotnet/runtime-services" (click)="sidebarOpen.set(false)"><span>◉</span> Runtime & Background Services</a>
         <a routerLinkActive="active" routerLink="/dotnet/runtime-internals" (click)="sidebarOpen.set(false)"><span>◉</span> CLR, JIT & Assemblies</a>
         <a routerLinkActive="active" routerLink="/dotnet/memory-performance" (click)="sidebarOpen.set(false)"><span>◉</span> Memory, GC & Performance</a>
         <a routerLinkActive="active" routerLink="/dotnet/di-configuration-options" (click)="sidebarOpen.set(false)"><span>◉</span> DI, Configuration & Options</a>
         <a routerLinkActive="active" routerLink="/dotnet/logging-diagnostics" (click)="sidebarOpen.set(false)"><span>◉</span> Logging & Diagnostics</a>
         <a routerLinkActive="active" routerLink="/dotnet/caching-auth-serialization" (click)="sidebarOpen.set(false)"><span>◉</span> Caching, Auth & Serialization</a>
+        <a routerLinkActive="active" routerLink="/dotnet/testing" (click)="sidebarOpen.set(false)"><span>◉</span> Testing: Unit, Integration & Contract</a>
       }
       <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'databases'" (click)="toggleMenu('databases')"><span>DATA STORES</span><span class="menu-chevron">{{ openMenu() === 'databases' ? '−' : '+' }}</span></button>
       @if (openMenu() === 'databases') {
+        <a routerLinkActive="active" routerLink="/databases/learning-path" (click)="sidebarOpen.set(false)"><span>◍</span> Data Stores Learning Path</a>
         <a routerLinkActive="active" routerLink="/databases/nosql-graph-data-access" (click)="sidebarOpen.set(false)"><span>◍</span> PostgreSQL, MongoDB & Neo4j</a>
       }
       <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'devops'" (click)="toggleMenu('devops')"><span>DEVOPS & CLOUD</span><span class="menu-chevron">{{ openMenu() === 'devops' ? '−' : '+' }}</span></button>
       @if (openMenu() === 'devops') {
         <a routerLinkActive="active" routerLink="/devops/learning-path" (click)="sidebarOpen.set(false)"><span>☁</span> DevOps Learning Path</a>
+        <a routerLinkActive="active" routerLink="/devops/git-workflows" (click)="sidebarOpen.set(false)"><span>☁</span> Git Workflows</a>
         <a routerLinkActive="active" routerLink="/devops/cicd-fundamentals" (click)="sidebarOpen.set(false)"><span>☁</span> CI/CD Fundamentals</a>
         <a routerLinkActive="active" routerLink="/devops/docker" (click)="sidebarOpen.set(false)"><span>☁</span> Docker</a>
         <a routerLinkActive="active" routerLink="/devops/kubernetes" (click)="sidebarOpen.set(false)"><span>☁</span> Kubernetes</a>
@@ -140,7 +147,6 @@
         <a routerLinkActive="active" routerLink="/genai-engineer/cloud-native-ai" (click)="sidebarOpen.set(false)"><span>&#9670;</span> 15. Cloud-Native AI</a>
         <a routerLinkActive="active" routerLink="/genai-engineer/ai-projects" (click)="sidebarOpen.set(false)"><span>&#9670;</span> 16. AI Projects & Portfolio</a>
       }
-      <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'leadership'" (click)="toggleMenu('leadership')"><span>LEADERSHIP</span><span class="menu-chevron">{{ openMenu() === 'leadership' ? '−' : '+' }}</span></button>
       <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'architecture'" (click)="toggleMenu('architecture')"><span>ARCHITECTURE</span><span class="menu-chevron">{{ openMenu() === 'architecture' ? '−' : '+' }}</span></button>
       @if (openMenu() === 'architecture') {
         <a routerLinkActive="active" routerLink="/architecture/learning-path" (click)="sidebarOpen.set(false)"><span>◇</span> Architecture Learning Path</a>
@@ -179,6 +185,7 @@
       }
       <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'comparisons'" (click)="toggleMenu('comparisons')"><span>DECISION GUIDES</span><span class="menu-chevron">{{ openMenu() === 'comparisons' ? '−' : '+' }}</span></button>
       @if (openMenu() === 'comparisons') {
+        <a routerLinkActive="active" routerLink="/comparisons/learning-path" (click)="sidebarOpen.set(false)"><span>⇄</span> How to Make Trade-offs</a>
         <a routerLinkActive="active" routerLink="/comparisons/task-thread-async" (click)="sidebarOpen.set(false)"><span>⇄</span> Task vs Thread vs Async</a>
         <a routerLinkActive="active" routerLink="/comparisons/efcore-dapper" (click)="sidebarOpen.set(false)"><span>⇄</span> EF Core vs Dapper</a>
         <a routerLinkActive="active" routerLink="/comparisons/monolith-microservices" (click)="sidebarOpen.set(false)"><span>⇄</span> Monolith vs Microservices</a>
