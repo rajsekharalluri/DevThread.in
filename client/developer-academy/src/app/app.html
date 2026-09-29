@@ -122,6 +122,7 @@
       }
       <button class="sidebar-heading menu-toggle" type="button" [attr.aria-expanded]="openMenu() === 'genai-engineer'" (click)="toggleMenu('genai-engineer')"><span>GENAI ENGINEER</span><span class="menu-chevron">{{ openMenu() === 'genai-engineer' ? '−' : '+' }}</span></button>
       @if (openMenu() === 'genai-engineer') {
+        <a routerLinkActive="active" routerLink="/genai-engineer/learning-path" (click)="sidebarOpen.set(false)"><span>&#9670;</span> GenAI Engineer Learning Path</a>
         <a routerLinkActive="active" routerLink="/genai-engineer/programming-ai-foundations" (click)="sidebarOpen.set(false)"><span>&#9670;</span> 1. Programming & AI Foundations</a>
         <a routerLinkActive="active" routerLink="/genai-engineer/llm-fundamentals" (click)="sidebarOpen.set(false)"><span>&#9670;</span> 2. GenAI & LLM Fundamentals</a>
         <a routerLinkActive="active" routerLink="/genai-engineer/prompt-engineering" (click)="sidebarOpen.set(false)"><span>&#9670;</span> 3. Prompt Engineering</a>
